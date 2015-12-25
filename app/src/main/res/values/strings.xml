@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">FarmerHelper</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">AgriculturaSucks</string>
+    <string name="addPlus">+</string>
+    <string name="finish">Finalizar</string>
+    <string name="alreadyExistsCulture">\nJá adicionou essa cultura!</string>
+    <string name="cultureName">Nome da sua cultura</string>
     <string name="action_settings">Settings</string>
+    <string name="errorNoCulture">Cultura inexistente!\nInsira uma cultura presente na lista.</string>
 </resources>
