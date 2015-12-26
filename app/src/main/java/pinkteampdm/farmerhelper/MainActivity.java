@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         cultureName_aCTextView.setAdapter(newAdapter);
     }
 
-
     public void onClickAddNameButton(View view){
         boolean flag = false;
         String newName = cultureName_aCTextView.getText().toString();
@@ -58,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 flag = true;
 
         if(!flag) {
-            cultureName_aCTextView.setError(Html.fromHtml("<font color='blue'>this is the error</font>"));
-           // cultureName_aCTextView.setError("Cultura inexistente!\nInsira uma cultura presente na lista.");
+            cultureName_aCTextView.setError(Html.fromHtml("<font color='green'>this is the error</font>"));
+            // cultureName_aCTextView.setError("Cultura inexistente!\nInsira uma cultura presente na lista.");
             return;
         }
 
@@ -71,36 +72,60 @@ public class MainActivity extends AppCompatActivity {
                 text.setText(R.string.alreadyExistsCulture);
                 Toast toast = new Toast(getApplicationContext());
                 toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
                 toast.show();
             }
 
         insertedCulturesArray.addElement(newName);
 
-        cultureZone_linearLayout.addView(createNewTextView(cultureName_aCTextView.getText().toString()));
+        cultureZone_linearLayout.addView(createNewLinearLayout(createNewTextView(newName), createNewButton()));
         cultureZone_scrollView.scrollTo(0, cultureZone_scrollView.getBottom());
     }
 
     private boolean checkNewCulture(String newName){
         if(newName.equals(""))
             return false;
-        if(newName.length()>= 1){
+        if(newName.length()>= 1)
             if ((newName.charAt(0) == ' ') && (newName.charAt(1)!= ' '))
                 return true;
-        }
 
         return true;
     }
+
+    private LinearLayout createNewLinearLayout(TextView textView, Button button){
+        LinearLayout horizontalLL = new LinearLayout(this);
+
+        horizontalLL.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScrollView.LayoutParams.WRAP_CONTENT));
+        horizontalLL.setOrientation(LinearLayout.HORIZONTAL);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams
+                (RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+     //   lp.addRule(RelativeLayout.LEFT_OF, textView.getId());
+        horizontalLL.addView(button, lp);
+        horizontalLL.addView(textView);
+
+
+        return horizontalLL;
+    }
+
     private TextView createNewTextView(String text) {
-        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ScrollView.LayoutParams.WRAP_CONTENT);
+        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         final TextView textView = new TextView(this);
         textView.setLayoutParams(lparams);
-      //  textView.setTextSize(18);
+        textView.setTextSize(18);
         textView.setText(text);
         return textView;
     }
 
+    private Button createNewButton(){
+        final LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final Button button = new Button(this);
+        button.setLayoutParams(lparams);
+
+        button.setText("x");
+        return button;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

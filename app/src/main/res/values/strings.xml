@@ -6,4 +6,8 @@
     <string name="cultureName">Nome da sua cultura</string>
     <string name="action_settings">Settings</string>
     <string name="errorNoCulture">Cultura inexistente!\nInsira uma cultura presente na lista.</string>
+
+
+    <color name="remove_text_x">#dda0a0a0</color>
+    <color name="background">#dddadada</color>
 </resources>
