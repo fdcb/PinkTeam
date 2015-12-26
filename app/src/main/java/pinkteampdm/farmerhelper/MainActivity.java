@@ -1,5 +1,6 @@
 package pinkteampdm.farmerhelper;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -79,7 +80,27 @@ public class MainActivity extends AppCompatActivity {
 
         insertedCulturesArray.addElement(newName);
 
-        cultureZone_linearLayout.addView(createNewLinearLayout(createNewTextView(newName), createNewButton()));
+        LayoutInflater layoutInflater =
+                (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View addView = layoutInflater.inflate(R.layout.row, null);
+        final TextView textOut = (TextView)addView.findViewById(R.id.textout);
+        textOut.setText(newName);
+        Button buttonRemove = (Button)addView.findViewById(R.id.remove);
+        buttonRemove.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                for( int i = 0; i < insertedCulturesArray.size(); i++)
+                    if(insertedCulturesArray.elementAt(i).equals(textOut.getText())){
+                        insertedCulturesArray.removeElementAt(i);
+                        break;
+                    }
+                ((LinearLayout) addView.getParent()).removeView(addView);
+            }
+        });
+
+     // cultureZone_linearLayout.addView(createNewLinearLayout(createNewTextView(newName), createNewButton()));
+        cultureZone_linearLayout.addView(addView);
         cultureZone_scrollView.scrollTo(0, cultureZone_scrollView.getBottom());
     }
 
@@ -93,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private LinearLayout createNewLinearLayout(TextView textView, Button button){
+  /*  private LinearLayout createNewLinearLayout(TextView textView, Button button){
         LinearLayout horizontalLL = new LinearLayout(this);
 
         horizontalLL.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScrollView.LayoutParams.WRAP_CONTENT));
@@ -101,10 +122,9 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams
                 (RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-     //   lp.addRule(RelativeLayout.LEFT_OF, textView.getId());
+        //   lp.addRule(RelativeLayout.LEFT_OF, textView.getId());
         horizontalLL.addView(button, lp);
         horizontalLL.addView(textView);
-
 
         return horizontalLL;
     }
@@ -125,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         button.setText("x");
         return button;
-    }
+    } */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
