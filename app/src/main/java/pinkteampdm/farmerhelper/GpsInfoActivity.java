@@ -11,7 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class GpsInfoActivity extends AppCompatActivity {
 
@@ -43,7 +47,15 @@ public class GpsInfoActivity extends AppCompatActivity {
             Log.i("GPS ACTIVIDADE",cultures.get(i) );
 
         nameCulture="Couve";
-        dateCulture="12-12-2015";
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
+        Date data = new Date(0);
+
+        Calendar  cal = Calendar.getInstance();
+        cal.setTime(data);
+        Date data_atual = (Date) cal.getTime();
+        dateCulture = dateFormat.format(data_atual);
+       Log.i("Data Cultura","Data: "+dateCulture);
     }
 
     public void insertDataGPS(View view ){

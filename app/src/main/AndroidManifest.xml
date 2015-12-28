@@ -29,6 +29,10 @@
             android:name=".LocationActivity"
             android:label="@string/title_activity_location" >
         </activity>
+        <activity
+            android:name=".PlantActivity"
+            android:label="@string/title_activity_plant" >
+        </activity>
     </application>
 
 </manifest>

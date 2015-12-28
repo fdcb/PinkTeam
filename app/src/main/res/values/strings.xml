@@ -17,7 +17,11 @@
     <string name="latitude">Latitude (decimais):</string>
     <string name="longitude">Longitude (decimais):</string>
     <string name="validateGPS"> Validar</string>
+    <string name="questionGPS">Está na localização da cultura</string>
+    <string name="questionPlantCulture">Já plantou a cultura</string>
+
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_plant">PlantActivity</string>
 </resources>

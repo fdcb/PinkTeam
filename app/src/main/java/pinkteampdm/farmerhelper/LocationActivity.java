@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -18,7 +19,9 @@ public class LocationActivity extends AppCompatActivity {
 
     Button yesButton;
     Button noButton;
+    TextView titleChoose;
     ArrayList<String> cultures;
+    String nameCulture;
 
 
     @Override
@@ -28,11 +31,15 @@ public class LocationActivity extends AppCompatActivity {
 
         cultures=getIntent().getExtras().getStringArrayList("cultures");
 
-        for ( int i=0;i<cultures.size();i++)
-            Log.i("LINDO",cultures.get(i) );
         yesButton = (Button) findViewById(R.id.buttonYes);
         noButton = (Button) findViewById(R.id.buttonNo);
+        titleChoose=(TextView) findViewById(R.id.textView_chooseCulture);
 
+
+       for ( int i=0;i<cultures.size();i++)
+           nameCulture=cultures.get(i);
+            titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
+        //Log.i("Rebentei", "Depois de alterar o nome");
 
     }
 
@@ -44,16 +51,18 @@ public class LocationActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        for ( int i=0;i<cultures.size();i++ )
+            nameCulture=cultures.get(i);
         builder.setTitle("  Localização GPS");
-        builder.setMessage("Quer introduzir as suas coordenadas ?");
+        builder.setMessage("Quer introduzir as coordenadas para a cultura ?");
 
         builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
 
                 dialog.dismiss();
-                Intent gpsValues = new Intent( getApplicationContext(), GpsInfoActivity.class );
-                gpsValues.putStringArrayListExtra("cultures",cultures);
+                Intent gpsValues = new Intent(getApplicationContext(), GpsInfoActivity.class);
+                gpsValues.putStringArrayListExtra("cultures", cultures);
                 gpsValues.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(gpsValues);
 
