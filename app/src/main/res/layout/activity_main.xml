@@ -47,7 +47,8 @@
         android:layout_marginTop="15dp"
         android:id="@+id/button_Finalizar"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickFinalize"/>
 
     <ScrollView
         android:layout_width="233dp"

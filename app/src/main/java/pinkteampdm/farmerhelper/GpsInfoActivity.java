@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class GpsInfoActivity extends AppCompatActivity {
 
     EditText latitude;
@@ -23,6 +25,7 @@ public class GpsInfoActivity extends AppCompatActivity {
     String nameCulture;
     String dateCulture;
     private static final String TAG="InserirDados";
+    ArrayList<String> cultures;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,13 @@ public class GpsInfoActivity extends AppCompatActivity {
 
         latitude = (EditText) findViewById( R.id.latitude_value);
         longitude = (EditText) findViewById( R.id.longitude_value);
-        //res = (TextView) findViewById( R.id.res_txt);
+        res = (TextView) findViewById( R.id.res_txt);
         helpBD = new DataBaseHelper(this);
         bd = helpBD.getWritableDatabase();
+
+        cultures=getIntent().getExtras().getStringArrayList("cultures");
+        for ( int i=0;i<cultures.size();i++)
+            Log.i("GPS ACTIVIDADE",cultures.get(i) );
 
         nameCulture="Couve";
         dateCulture="12-12-2015";
@@ -79,8 +86,7 @@ public class GpsInfoActivity extends AppCompatActivity {
         value1=value1-minutes1;
         value1=value1*60;
         seconds1=(int)value1;
-        //res.setText("Latitude:"+degree+"º "+minutes+"'"+seconds+"''\n"+"Longitude: "+degree1+"º "+minutes1+"'"+seconds1+"''");
-
+        res.setText("Latitude:"+degree+"º "+minutes+"'"+seconds+"''\n"+"Longitude: "+degree1+"º "+minutes1+"'"+seconds1+"''");
 
         if ( helpBD.insertCultureRegistry(bd, nameCulture, dateCulture, inicialValue+","+inicialValue1)!=-1 ) {
             Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();

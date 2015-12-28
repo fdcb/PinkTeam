@@ -5,15 +5,20 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.Vector;
+
 public class LocationActivity extends AppCompatActivity {
 
     Button yesButton;
     Button noButton;
+    ArrayList<String> cultures;
 
 
     @Override
@@ -21,6 +26,10 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
+        cultures=getIntent().getExtras().getStringArrayList("cultures");
+
+        for ( int i=0;i<cultures.size();i++)
+            Log.i("LINDO",cultures.get(i) );
         yesButton = (Button) findViewById(R.id.buttonYes);
         noButton = (Button) findViewById(R.id.buttonNo);
 
@@ -44,7 +53,8 @@ public class LocationActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 Intent gpsValues = new Intent( getApplicationContext(), GpsInfoActivity.class );
-                gpsValues.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                gpsValues.putStringArrayListExtra("cultures",cultures);
+                gpsValues.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(gpsValues);
 
             }

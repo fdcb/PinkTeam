@@ -1,6 +1,7 @@
 package pinkteampdm.farmerhelper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -114,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void onClickFinalize( View view){
+        Intent newIntent = new Intent( getApplicationContext(),LocationActivity.class);
+        newIntent.putExtra("cultures",insertedCulturesArray);
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(newIntent);
+    }
   /*  private LinearLayout createNewLinearLayout(TextView textView, Button button){
         LinearLayout horizontalLL = new LinearLayout(this);
 
