@@ -9,4 +9,15 @@
 
     <color name="remove_text_x">#dda0a0a0</color>
     <color name="background">#ffffff</color>
+
+    <string name="yesButton">Sim</string>
+    <string name="noButton">Não</string>
+    <string name="title_activity_gps_info">GPS coordenadas</string>
+    <string name="gpsManual">Introduza os dados: </string>
+    <string name="latitude">Latitude (decimais):</string>
+    <string name="longitude">Longitude (decimais):</string>
+    <string name="validateGPS"> Validar</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_location">LocationActivity</string>
 </resources>

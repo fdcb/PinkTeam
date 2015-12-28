@@ -845,11 +845,13 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return newCursor.getInt(newCursor.getColumnIndex(COLUMN1_ZONE_ID));
     }
 
-    public void insertCultureRegistry(SQLiteDatabase db, String name,String seedDate, String gps){
+    public long insertCultureRegistry(SQLiteDatabase db, String name,String seedDate, String gps){
+
         ContentValues newCV = new ContentValues();
         newCV.put(COLUMN2_CULTUREREGISTRY_CULTUREID, getCultureID(db,name));
         newCV.put(COLUMN3_CULTUREREGISTRY_DATE, seedDate);
         newCV.put(COLUMN4_CULTUREREGISTRY_GPS, gps);
-        db.insert(TABLE_CULTUREREGISTRY, null, newCV);
+        return (db.insert(TABLE_CULTUREREGISTRY, null, newCV) );
+
     }
 }

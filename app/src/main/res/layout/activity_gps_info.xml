@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="pinkteampdm.farmerhelper.GpsInfoActivity">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="*"  android:stretchColumns="*" >
+            <!-- Row 1 with imageView e TextView -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/spaceLine1">
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="30px"
+                    android:layout_column="0"
+                    android:layout_span="3" />
+            </TableRow>
+            <TableRow
+                android:layout_height="250px"
+                android:layout_width="fill_parent"
+                android:id="@+id/rowTitle">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:src="@drawable/farmgps2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    />
+                <TextView
+                    android:id="@+id/titleGps_textView"
+                    android:text="@string/gpsManual"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#41a075"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="bottom"
+                    android:layout_span="2"
+                    />
+            </TableRow>
+            <!-- Row 2 with nothing : space-->
+            <TableRow
+                android:id="@+id/spaceLine2"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="200px"
+                    android:layout_column="0"
+                    android:layout_span="3"
+                    />
+
+            </TableRow>
+            <!-- Row 3 with 2 columns -->
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/txt_latitude"
+                android:text="@string/latitude"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                />
+
+            <EditText
+                android:id="@+id/latitude_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_latitude"
+                android:layout_alignParentEnd="true"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="50px"
+                android:layout_column="0"
+                android:layout_span="3" />
+        </TableRow>
+        <TableRow
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/txt_longitude"
+                android:text="@string/longitude"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/longitude_value"
+                android:layout_alignBottom="@+id/txt_longitude"
+                android:layout_toEndOf="@+id/txt_longitude"
+                />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+            <Button
+                android:id="@+id/valGps_buttons"
+                android:text="@string/validateGPS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="insertDataGPS"
+                android:layout_span="2" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+            <TextView
+                android:id="@+id/res_txt"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="93dp"
+                />
+        </TableRow>
+    </TableLayout>
+</ScrollView>
+
+</RelativeLayout>
