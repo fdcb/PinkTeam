@@ -10,13 +10,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DateActivity extends AppCompatActivity {
 
     ArrayList<String> cultures;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-    DatePicker date;
+    DatePicker datePicker;
+    Calendar calendar;
+    int year, month, day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,11 @@ public class DateActivity extends AppCompatActivity {
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
 
-        date= (DatePicker) findViewById(R.id.date_datePicker);
+        datePicker= (DatePicker) findViewById(R.id.date_datePicker);
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     public void insertDate(View view){
@@ -39,7 +46,7 @@ public class DateActivity extends AppCompatActivity {
         helpBD.listCultureRegistry(db);*/
 
         //String dateComplete=date.getDayOfMonth()+"-"+date.getMonth()+"-"+date.getYear();
-        Log.i("Date escolhida",date.getDayOfMonth()+"-"+date.getMonth()+"-"+date.getYear());
+        Log.i("Date escolhida",datePicker.getDayOfMonth()+"-"+datePicker.getMonth()+1+"-"+datePicker.getYear());
 
     }
 
