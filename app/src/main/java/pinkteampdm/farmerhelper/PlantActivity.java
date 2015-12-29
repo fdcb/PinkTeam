@@ -29,11 +29,11 @@ public class PlantActivity extends AppCompatActivity {
 
         cultures=getIntent().getExtras().getStringArrayList("cultures");
         titlePlant=(TextView) findViewById(R.id.textView_plant);
-        for ( int i=0;i<cultures.size();i++) {
+       /* for ( int i=0;i<cultures.size();i++) {
             //currIndex=i;
             Log.i("Name Culture", cultures.get(i));
 
-        }
+        }*/
         nameCulture = cultures.get(0);
         titlePlant.setText(titlePlant.getText() + " " + nameCulture + "?");
 
@@ -45,7 +45,7 @@ public class PlantActivity extends AppCompatActivity {
     }
     // buttonYes
     public void onClickNextActivity(View view){
-        Intent newIntent = new Intent( getApplicationContext(), LocationActivity.class);
+        Intent newIntent = new Intent( getApplicationContext(), DateActivity.class);
         newIntent.putExtra("cultures",cultures);
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(newIntent);
