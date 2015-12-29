@@ -31,4 +31,5 @@
     <color name="borderPressed_button">#dd353535</color>
     <color name="font_removeButton">#dda0a0a0</color>
     <color name="background">#ffffff</color>
+    <color name="shadow_button">#27000000</color>
 </resources>
