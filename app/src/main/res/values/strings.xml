@@ -19,9 +19,10 @@
     <string name="validateGPS"> Validar</string>
     <string name="questionGPS">Está na localização da cultura</string>
     <string name="questionPlantCulture">Já plantou a cultura</string>
-
+    <string name="questionDateCulture">Insira a data de plantação:</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_location">LocationActivity</string>
     <string name="title_activity_plant">PlantActivity</string>
+    <string name="title_activity_date">DateActivity</string>
 </resources>

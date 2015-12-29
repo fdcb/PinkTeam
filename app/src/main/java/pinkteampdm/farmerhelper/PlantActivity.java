@@ -19,7 +19,8 @@ public class PlantActivity extends AppCompatActivity {
     DataBaseHelper helpBD;
     SQLiteDatabase db;
     int currIndex=0;
-    String a="sem_data",b="sem_gps";
+    String a;
+    String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class PlantActivity extends AppCompatActivity {
 
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
+        a="sem_data";
+        b="sem_gps";
 
     }
     // buttonYes
@@ -50,25 +53,24 @@ public class PlantActivity extends AppCompatActivity {
     //buttonNo
     public void onClickInsertData(View view) {
         //insert info into db
-        Log.i("Name Culture no insert:", nameCulture);
-
        if (helpBD.insertCultureRegistry(db, nameCulture, a, b)) {
-            Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
+            /*Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
         }
+       helpBD.listCultureRegistry(db);*/
+            if (cultures.size()>1){
+                cultures.remove(0);
+                Intent meAgain = new Intent( getApplicationContext(), LocationActivity.class);
+                meAgain.putExtra("cultures",cultures);
+                meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(meAgain);
+            }
+            else
+                return;
 
-
-
-
-        /*if ( cultures.size()>1 ){
-            cultures.remove(0);
-        }
-        else {
-            System.out.println("Nothing goes happen");
        }
 
-        restart();*/
     }
 
 }
