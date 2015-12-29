@@ -20,7 +20,7 @@ public class DateActivity extends AppCompatActivity {
     ArrayList<String> cultures;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-    DatePicker datePicker;
+    //DatePicker datePicker;
     Calendar calendar;
     TextView dateView;
     int year, month, day;
@@ -35,7 +35,7 @@ public class DateActivity extends AppCompatActivity {
         db = helpBD.getWritableDatabase();
 
         dateView = (TextView) findViewById(R.id.dateView);
-        datePicker= (DatePicker) findViewById(R.id.date_datePicker);
+       // datePicker= (DatePicker) findViewById(R.id.date_datePicker);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
@@ -85,7 +85,7 @@ public class DateActivity extends AppCompatActivity {
         helpBD.listCultureRegistry(db);*/
 
         //String dateComplete=date.getDayOfMonth()+"-"+date.getMonth()+"-"+date.getYear();
-        Log.i("Date escolhida",datePicker.getDayOfMonth()+"-"+datePicker.getMonth()+1+"-"+datePicker.getYear());
+       // Log.i("Date escolhida",datePicker.getDayOfMonth()+"-"+datePicker.getMonth()+1+"-"+datePicker.getYear());
 
     }
 
