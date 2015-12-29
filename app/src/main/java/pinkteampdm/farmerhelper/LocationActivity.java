@@ -52,7 +52,7 @@ public class LocationActivity extends AppCompatActivity {
     public void locationAutomatic( View view){
         System.out.println("YESSS");
         //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
-
+        //falta cena do andre
 
         helpBD.insertCultureRegistry(db, nameCulture, a, b);
         if (cultures.size()< 1)
