@@ -68,9 +68,14 @@ public class PlantActivity extends AppCompatActivity {
             // arg1 = year
             // arg2 = month
             // arg3 = day
-            Log.d("data escolhida :", cultures.size()-1+" "+arg3+"-"+(arg2+1)+"-"+arg1);
-           // showDate(arg1, arg2 + 1, arg3);
-            //cultures.add(cultures.size()-1,arg3+"-"+(arg2+1)+"-"+arg1);
+            //Log.d("data escolhida :", cultures.size()-1+" "+arg3+"-"+(arg2+1)+"-"+arg1);
+            cultures.add(cultures.size()-1,arg3+"-"+(arg2+1)+"-"+arg1);
+            for( int i=0;i<cultures.size();i++)
+                Log.d("CULTURES name: ", cultures.get(i));
+            /*Intent newIntent = new Intent( getApplicationContext(), GpsInfoActivity.class);
+            newIntent.putExtra("cultures",cultures);
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(newIntent);*/
         }
     };
 
