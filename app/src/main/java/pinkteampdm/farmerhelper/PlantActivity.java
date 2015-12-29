@@ -40,7 +40,7 @@ public class PlantActivity extends AppCompatActivity {
     }
     // buttonYes
     public void onClickNextActivity(View view){
-        Intent newIntent = new Intent( getApplicationContext(), LocationActivity.class);
+        Intent newIntent = new Intent( getApplicationContext(), DateActivity.class);
         newIntent.putExtra("cultures",cultures);
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(newIntent);

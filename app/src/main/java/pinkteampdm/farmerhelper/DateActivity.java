@@ -1,37 +1,43 @@
 package pinkteampdm.farmerhelper;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class DateActivity extends AppCompatActivity {
+
+    ArrayList<String> cultures;
+    DataBaseHelper helpBD;
+    SQLiteDatabase db;
+    EditText date;
+    String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date);
+
+        cultures=getIntent().getExtras().getStringArrayList("cultures");
+        helpBD = new DataBaseHelper(this);
+        db = helpBD.getWritableDatabase();
+
+        date= (EditText) findViewById(R.id.date_editText);
+        b="sem_gps";
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_date, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void insertDate(View view){
+       if ( helpBD.insertCultureRegistry(db, cultures.get(0), date.getText().toString(), b) ){
+             Toast.makeText(this, "Foi inserido na BD a DATA", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
         }
-
-        return super.onOptionsItemSelected(item);
+        helpBD.listCultureRegistry(db);
     }
+
+
 }

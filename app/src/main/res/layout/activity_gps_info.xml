@@ -131,7 +131,7 @@ tools:context="pinkteampdm.farmerhelper.GpsInfoActivity">
             android:layout_width="fill_parent">
             <Button
                 android:id="@+id/valGps_buttons"
-                android:text="@string/validateGPS"
+                android:text="@string/gpsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
