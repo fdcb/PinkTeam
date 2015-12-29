@@ -33,7 +33,7 @@ tools:context="pinkteampdm.farmerhelper.GpsInfoActivity">
             android:id="@+id/rowTitle">
             <ImageView
                 android:id="@+id/imageView"
-                android:src="@drawable/gps2"
+                android:src="@drawable/farmgps2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
