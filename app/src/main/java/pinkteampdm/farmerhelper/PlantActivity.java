@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,14 +40,14 @@ public class PlantActivity extends AppCompatActivity {
         db = helpBD.getWritableDatabase();
 
     }
-
+    // buttonYes
     public void onClickNextActivity(View view){
         Intent newIntent = new Intent( getApplicationContext(), LocationActivity.class);
         newIntent.putExtra("cultures",cultures);
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(newIntent);
     }
-
+    //buttonNo
     public void onClickInsertData(View view) {
         //insert info into db
         Log.i("Name Culture no insert:", nameCulture);
