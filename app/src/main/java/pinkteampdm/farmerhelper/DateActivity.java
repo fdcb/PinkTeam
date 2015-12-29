@@ -3,7 +3,9 @@ package pinkteampdm.farmerhelper;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,7 +16,7 @@ public class DateActivity extends AppCompatActivity {
     ArrayList<String> cultures;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-    EditText date;
+    DatePicker date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class DateActivity extends AppCompatActivity {
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
 
-        date= (EditText) findViewById(R.id.date_editText);
+        date= (DatePicker) findViewById(R.id.date_datePicker);
     }
 
     public void insertDate(View view){
@@ -36,6 +38,8 @@ public class DateActivity extends AppCompatActivity {
         }
         helpBD.listCultureRegistry(db);*/
 
+        //String dateComplete=date.getDayOfMonth()+"-"+date.getMonth()+"-"+date.getYear();
+        Log.i("Date escolhida",date.getDayOfMonth()+"-"+date.getMonth()+"-"+date.getYear());
 
     }
 
