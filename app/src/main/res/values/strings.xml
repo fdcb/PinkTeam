@@ -12,7 +12,7 @@
     <string name="gpsManual">Introduza os dados: </string>
     <string name="latitude">Latitude (decimais):</string>
     <string name="longitude">Longitude (decimais):</string>
-    <string name="gpsButton"> Validar</string>
+    <string name="gpsButton"> Confirmar</string>
     <string name="questionGPS">Está na localização da cultura</string>
     <string name="questionPlantCulture">Já plantou a cultura</string>
     <string name="questionDateCulture">Insira a data de plantação:</string>

@@ -9,6 +9,7 @@ tools:context="pinkteampdm.farmerhelper.GpsInfoActivity">
 <ScrollView
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:fillViewport="false"
     >
     <TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -147,7 +148,7 @@ tools:context="pinkteampdm.farmerhelper.GpsInfoActivity">
             <TextView
                 android:id="@+id/res_txt"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="93dp"
                 />

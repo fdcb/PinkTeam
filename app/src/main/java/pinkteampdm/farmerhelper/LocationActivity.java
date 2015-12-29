@@ -22,10 +22,9 @@ public class LocationActivity extends AppCompatActivity {
     Button noButton;
     TextView titleChoose;
     ArrayList<String> cultures;
-    String nameCulture, a = "sem_data" ,b = "sem_gps";
+    String nameCulture;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,6 @@ public class LocationActivity extends AppCompatActivity {
     //   for ( int i=0;i<cultures.size();i++)
         nameCulture=cultures.get(0);
             titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
-        //Log.i("Rebentei", "Depois de alterar o nome");
-
     }
 
     public void locationAutomatic( View view){
@@ -54,7 +51,7 @@ public class LocationActivity extends AppCompatActivity {
         //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
         //falta cena do andre
 
-        helpBD.insertCultureRegistry(db, nameCulture, a, b);
+        helpBD.insertCultureRegistry(db, nameCulture, helpBD.no_date,helpBD.no_location);
         if (cultures.size()< 1)
             return;
         cultures.remove(0);
@@ -70,12 +67,10 @@ public class LocationActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-     /*   for ( int i=0;i<cultures.size();i++ )
-            nameCulture=cultures.get(i); */
         builder.setTitle(R.string.localGPS);
         builder.setMessage(R.string.insertCoo);
 
-        builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.yesButton, new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
 
@@ -90,11 +85,10 @@ public class LocationActivity extends AppCompatActivity {
 
         });
 
-        builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.noButton, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Vai buscar o método andre ou seja o locationAutomatic
                 dialog.dismiss();
             }
         });
