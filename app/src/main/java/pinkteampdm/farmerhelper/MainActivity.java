@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickFinalize( View view){
         Intent newIntent = new Intent( getApplicationContext(),PlantActivity.class);
         newIntent.putExtra("cultures",insertedCulturesArray);
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+       // newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(newIntent);
     }
   /*  private LinearLayout createNewLinearLayout(TextView textView, Button button){

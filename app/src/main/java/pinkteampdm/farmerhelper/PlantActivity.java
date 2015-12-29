@@ -14,13 +14,10 @@ import java.util.ArrayList;
 public class PlantActivity extends AppCompatActivity {
 
     ArrayList<String> cultures;
-    String nameCulture;
+    String nameCulture,a = "sem_data" ,b = "sem_gps";
     TextView titlePlant;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-    int currIndex=0;
-    String a;
-    String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +26,16 @@ public class PlantActivity extends AppCompatActivity {
 
         cultures=getIntent().getExtras().getStringArrayList("cultures");
         titlePlant=(TextView) findViewById(R.id.textView_plant);
-        for ( int i=0;i<cultures.size();i++) {
+       /* for ( int i=0;i<cultures.size();i++) {
             //currIndex=i;
             Log.i("Name Culture", cultures.get(i));
 
-        }
+        }*/
         nameCulture = cultures.get(0);
         titlePlant.setText(titlePlant.getText() + " " + nameCulture + "?");
 
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
-        a="sem_data";
-        b="sem_gps";
 
     }
     // buttonYes
@@ -53,25 +48,26 @@ public class PlantActivity extends AppCompatActivity {
     //buttonNo
     public void onClickInsertData(View view) {
         //insert info into db
-       if (helpBD.insertCultureRegistry(db, nameCulture, a, b)) {
+     //   if (helpBD.insertCultureRegistry(db, nameCulture, a, b)) {
             /*Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
         }
        helpBD.listCultureRegistry(db);*/
-            if (cultures.size()>1){
-                cultures.remove(0);
-                Intent meAgain = new Intent( getApplicationContext(), LocationActivity.class);
-                meAgain.putExtra("cultures",cultures);
-                meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(meAgain);
-            }
-            else
-                return;
-
-       }
-
+    /*     for ( int i=0;i<cultures.size();i++)
+            Log.i("Name Culture", cultures.get(i));
+    */
+        helpBD.insertCultureRegistry(db, nameCulture, a, b);
+        if (cultures.size()< 1)
+            return;
+        cultures.remove(0);
+        for ( int i=0;i<cultures.size();i++)
+            Log.i("Name Culture", cultures.get(i));
+        Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
+        meAgain.putExtra("cultures",cultures);
+        meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(meAgain);
+   //    }
     }
-
 }
 
