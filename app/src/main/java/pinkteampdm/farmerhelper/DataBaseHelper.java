@@ -64,6 +64,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private final String []moons = new String[]{"Minguante", "Crescente"};
     private final String []months = new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
 
+    public final String no_location = "sem_gps";
+    public final String no_date = "sem_data";
 
     /*              Queries related to CultureRegistry table                */
     private static final String CULTUREREGISTRY_TABLE_CREATE =
