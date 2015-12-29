@@ -15,7 +15,6 @@ public class DateActivity extends AppCompatActivity {
     DataBaseHelper helpBD;
     SQLiteDatabase db;
     EditText date;
-    String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +26,15 @@ public class DateActivity extends AppCompatActivity {
         db = helpBD.getWritableDatabase();
 
         date= (EditText) findViewById(R.id.date_editText);
-        b="sem_gps";
     }
 
     public void insertDate(View view){
-       if ( helpBD.insertCultureRegistry(db, cultures.get(0), date.getText().toString(), b) ){
+      /* if ( helpBD.insertCultureRegistry(db, cultures.get(0), date.getText().toString(), helpBD.no_location) ){
              Toast.makeText(this, "Foi inserido na BD a DATA", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
         }
-        helpBD.listCultureRegistry(db);
+        helpBD.listCultureRegistry(db);*/
     }
 
 
