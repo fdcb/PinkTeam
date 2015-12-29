@@ -867,8 +867,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             Log.d("Table CultReistry", "\n\n---------Nova Linha-------");
             Log.d("Table CultRegistry", "ID: " + newCursor.getString(0) );
             Log.d("Table CultRegistry", "CultID: " + newCursor.getString(1) );
-            Log.d("Table CultReistry", "Date : " + newCursor.getString(3) );
-            Log.d("Table CultReistry", "GPS: " + newCursor.getString(4) );
+            Log.d("Table CultReistry", "Date : " + newCursor.getString(2) );
+            Log.d("Table CultReistry", "GPS: " + newCursor.getString(3) );
         }
 
     }
