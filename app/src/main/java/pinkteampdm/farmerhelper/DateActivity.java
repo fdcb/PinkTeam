@@ -35,6 +35,8 @@ public class DateActivity extends AppCompatActivity {
             Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
         }
         helpBD.listCultureRegistry(db);*/
+
+
     }
 
 
