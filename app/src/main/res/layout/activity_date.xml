@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:onClick="insertDate"
+        android:onClick="setDate"
         android:layout_span="2"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -39,5 +39,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
         android:layout_above="@+id/button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/date_datePicker"
+        android:layout_toStartOf="@+id/button" />
 
 </RelativeLayout>
