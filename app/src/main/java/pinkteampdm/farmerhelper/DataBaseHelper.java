@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
 
@@ -340,7 +341,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
     private void insertZone(SQLiteDatabase db, String name, String description){
-        db.execSQL("INSERT INTO " +TABLE_ZONE+ "(" +COLUMN2_ZONE_NAME+ "," +COLUMN3_ZONE_DESCRIPTION+ ") VALUES (\"" +name+ "\", \""  +description+ "\");");
+        db.execSQL("INSERT INTO " + TABLE_ZONE + "(" + COLUMN2_ZONE_NAME + "," + COLUMN3_ZONE_DESCRIPTION + ") VALUES (\"" + name + "\", \"" + description + "\");");
     }
 
     private void insertAllCultures(SQLiteDatabase db){
@@ -857,6 +858,18 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             return false;
         else
             return true;
+
+    }
+
+    public void listCultureRegistry(SQLiteDatabase db){
+        Cursor newCursor = db.query(TABLE_CULTUREREGISTRY, new String[]{COLUMN1_CULTUREREGISTRY_ID, COLUMN2_CULTUREREGISTRY_CULTUREID, COLUMN3_CULTUREREGISTRY_DATE, COLUMN4_CULTUREREGISTRY_GPS },null,null,null,null,null);
+        while(newCursor.moveToNext()){
+            Log.d("Table CultReistry", "\n\n---------Nova Linha-------");
+            Log.d("Table CultRegistry", "ID: " + newCursor.getString(0) );
+            Log.d("Table CultRegistry", "CultID: " + newCursor.getString(1) );
+            Log.d("Table CultReistry", "Date : " + newCursor.getString(3) );
+            Log.d("Table CultReistry", "GPS: " + newCursor.getString(4) );
+        }
 
     }
 }
