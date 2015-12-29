@@ -41,6 +41,8 @@
         android:layout_gravity="center"
         android:onClick="insertDate"
         android:layout_span="2"
+        android:background="@drawable/button_style"
+        android:textColor="@color/font_button"
         android:layout_below="@+id/date_editText"
         android:layout_centerHorizontal="true" />
 

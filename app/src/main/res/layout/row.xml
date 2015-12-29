@@ -10,7 +10,7 @@
         android:layout_alignParentRight="true"
 
         android:background="@color/background"
-        android:textColor="@color/remove_text_x"
+        android:textColor="@color/font_removeButton"
         android:text="x"
         android:textSize="16dp"
         android:gravity="bottom|center"

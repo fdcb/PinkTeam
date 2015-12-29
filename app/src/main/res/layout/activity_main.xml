@@ -48,6 +48,8 @@
         android:id="@+id/button_Finalizar"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/button_style"
+        android:textColor="@color/font_button"
         android:onClick="onClickFinalize"/>
 
     <ScrollView

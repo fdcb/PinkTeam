@@ -29,7 +29,9 @@
         android:layout_height="wrap_content"
         android:onClick="onClickNextActivity"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/textView_plant" />
+        android:layout_alignStart="@+id/textView_plant"
+        android:background="@drawable/button_style"
+        android:textColor="@color/font_button"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -41,7 +43,9 @@
         android:onClick="onClickInsertData"
         android:layout_alignEnd="@+id/textView_plant"
         android:layout_below="@+id/textView_plant"
-        android:layout_alignBottom="@+id/buttonYes" />
+        android:layout_alignBottom="@+id/buttonYes"
+        android:background="@drawable/button_style"
+        android:textColor="@color/font_button"/>
 
     <ImageView
         android:layout_width="wrap_content"

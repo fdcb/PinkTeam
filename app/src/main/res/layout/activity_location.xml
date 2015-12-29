@@ -30,6 +30,8 @@
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/buttonNo"
         android:onClick="locationAutomatic"
+        android:background="@drawable/button_style"
+        android:textColor="@color/font_button"
         />
 
     <Button
@@ -44,6 +46,8 @@
         android:layout_alignEnd="@+id/textView_chooseCulture"
         android:layout_alignTop="@+id/buttonYes"
         android:onClick="locationManual"
+        android:background="@drawable/button_style"
+        android:textColor="@color/font_button"
         />
 
 </RelativeLayout>

@@ -136,6 +136,8 @@ tools:context="pinkteampdm.farmerhelper.GpsInfoActivity">
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="insertDataGPS"
+                android:background="@drawable/button_style"
+                android:textColor="@color/font_button"
                 android:layout_span="2" />
         </TableRow>
         <TableRow
