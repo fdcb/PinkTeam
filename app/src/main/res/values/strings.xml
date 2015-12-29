@@ -22,6 +22,8 @@
     <string name="questionDateCulture">Insira a data de plantação:</string>
     <string name="date">Data:</string>
     <string name="dateButton">Inserir</string>
+    <string name="localGPS">Localização GPS</string>
+    <string name="insertCoo">Quer introduzir as coordenadas para a cultura ?</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_location">LocationActivity</string>

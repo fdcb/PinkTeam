@@ -72,8 +72,8 @@ public class LocationActivity extends AppCompatActivity {
 
      /*   for ( int i=0;i<cultures.size();i++ )
             nameCulture=cultures.get(i); */
-        builder.setTitle("  Localização GPS");
-        builder.setMessage( "Quer introduzir as coordenadas para a cultura ?");
+        builder.setTitle(R.string.localGPS);
+        builder.setMessage(R.string.insertCoo);
 
         builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
 
@@ -82,7 +82,7 @@ public class LocationActivity extends AppCompatActivity {
                 dialog.dismiss();
                 Intent gpsValues = new Intent(getApplicationContext(), GpsInfoActivity.class);
                 //gpsValues.putStringArrayListExtra("cultures", cultures);
-                gpsValues.putExtra("cultures",cultures);
+                gpsValues.putExtra("cultures", cultures);
                 gpsValues.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(gpsValues);
 
