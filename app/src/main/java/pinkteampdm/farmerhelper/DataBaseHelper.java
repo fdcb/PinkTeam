@@ -71,7 +71,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                         +COLUMN1_CULTUREREGISTRY_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         +COLUMN2_CULTUREINFO_CULTUREID+ " INTEGER, "
                         +COLUMN3_CULTUREREGISTRY_DATE+ " DATE, "
-                        +COLUMN4_CULTUREREGISTRY_GPS+ " STRING, "
+                        +COLUMN4_CULTUREREGISTRY_GPS+ " VARCHAR(10), "
                         + " FOREIGN KEY(" +COLUMN2_CULTUREREGISTRY_CULTUREID+ ") REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ ")); ";
 
     private static final String CULTUREREGISTRY_TABLE_DROP =
