@@ -42,26 +42,27 @@ public class GpsInfoActivity extends AppCompatActivity {
         helpBD = new DataBaseHelper(this);
         bd = helpBD.getWritableDatabase();
 
-        cultures=getIntent().getExtras().getStringArrayList("cultures");
+       /* cultures=getIntent().getExtras().getStringArrayList("cultures");
         for ( int i=0;i<cultures.size();i++)
-            Log.i("GPS ACTIVIDADE",cultures.get(i) );
+            Log.i("GPS ACTIVIDADE",cultures.get(i) );*/
 
         nameCulture="Couve";
+        dateCulture="1";
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
+       /* SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
         Date data = new Date(0);
 
         Calendar  cal = Calendar.getInstance();
         cal.setTime(data);
         Date data_atual = (Date) cal.getTime();
         dateCulture = dateFormat.format(data_atual);
-       Log.i("Data Cultura","Data: "+dateCulture);
+       Log.i("Data Cultura","Data: "+dateCulture);*/
     }
 
     public void insertDataGPS(View view ){
         double inicialValue, value, inicialValue1,value1;
         int degree,minutes,seconds,degree1,minutes1,seconds1;
-        String valor;
+        Boolean sucess;
 
         if ( latitude.length()==0 ){
             Toast.makeText(GpsInfoActivity.this, "Latitude inválida", Toast.LENGTH_SHORT).show();
@@ -100,7 +101,9 @@ public class GpsInfoActivity extends AppCompatActivity {
         seconds1=(int)value1;
         res.setText("Latitude:"+degree+"º "+minutes+"'"+seconds+"''\n"+"Longitude: "+degree1+"º "+minutes1+"'"+seconds1+"''");
 
-        if ( helpBD.insertCultureRegistry(bd, nameCulture, dateCulture, inicialValue+","+inicialValue1)!=-1 ) {
+        sucess=helpBD.insertCultureRegistry(bd, nameCulture, dateCulture, inicialValue+","+inicialValue1);
+        Log.i(TAG,"Já foste"+sucess);
+        if ( sucess ) {
             Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
         }
         else

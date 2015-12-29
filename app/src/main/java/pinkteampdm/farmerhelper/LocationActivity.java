@@ -62,7 +62,7 @@ public class LocationActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 Intent gpsValues = new Intent(getApplicationContext(), GpsInfoActivity.class);
-                gpsValues.putStringArrayListExtra("cultures", cultures);
+                //gpsValues.putStringArrayListExtra("cultures", cultures);
                 gpsValues.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(gpsValues);
 

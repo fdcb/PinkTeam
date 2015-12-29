@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickFinalize( View view){
-        Intent newIntent = new Intent( getApplicationContext(),PlantActivity.class);
+        Intent newIntent = new Intent( getApplicationContext(),LocationActivity.class);
         newIntent.putExtra("cultures",insertedCulturesArray);
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(newIntent);
