@@ -858,7 +858,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             return false;
         else
             return true;
-
     }
 
     public void listCultureRegistry(SQLiteDatabase db){

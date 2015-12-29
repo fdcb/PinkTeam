@@ -2,6 +2,7 @@ package pinkteampdm.farmerhelper;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,9 @@ public class LocationActivity extends AppCompatActivity {
     Button noButton;
     TextView titleChoose;
     ArrayList<String> cultures;
-    String nameCulture;
+    String nameCulture, a = "sem_data" ,b = "sem_gps";
+    DataBaseHelper helpBD;
+    SQLiteDatabase db;
 
 
     @Override
@@ -29,15 +32,18 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
+        helpBD = new DataBaseHelper(this);
+        db = helpBD.getWritableDatabase();
+
         cultures=getIntent().getExtras().getStringArrayList("cultures");
 
         yesButton = (Button) findViewById(R.id.buttonYes);
         noButton = (Button) findViewById(R.id.buttonNo);
-        titleChoose=(TextView) findViewById(R.id.textView_chooseCulture);
+        titleChoose = (TextView) findViewById(R.id.textView_chooseCulture);
 
 
-       for ( int i=0;i<cultures.size();i++)
-           nameCulture=cultures.get(i);
+    //   for ( int i=0;i<cultures.size();i++)
+        nameCulture=cultures.get(0);
             titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
         //Log.i("Rebentei", "Depois de alterar o nome");
 
@@ -45,16 +51,29 @@ public class LocationActivity extends AppCompatActivity {
 
     public void locationAutomatic( View view){
         System.out.println("YESSS");
+        //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
+
+
+        helpBD.insertCultureRegistry(db, nameCulture, a, b);
+        if (cultures.size()< 1)
+            return;
+        cultures.remove(0);
+        for ( int i=0;i<cultures.size();i++)
+            Log.i("Name Culture", cultures.get(i));
+        Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
+        meAgain.putExtra("cultures",cultures);
+        meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(meAgain);
     }
 
     public void locationManual( View view){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        for ( int i=0;i<cultures.size();i++ )
-            nameCulture=cultures.get(i);
+     /*   for ( int i=0;i<cultures.size();i++ )
+            nameCulture=cultures.get(i); */
         builder.setTitle("  Localização GPS");
-        builder.setMessage("Quer introduzir as coordenadas para a cultura ?");
+        builder.setMessage( "Quer introduzir as coordenadas para a cultura ?");
 
         builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
 
@@ -63,6 +82,7 @@ public class LocationActivity extends AppCompatActivity {
                 dialog.dismiss();
                 Intent gpsValues = new Intent(getApplicationContext(), GpsInfoActivity.class);
                 //gpsValues.putStringArrayListExtra("cultures", cultures);
+                gpsValues.putExtra("cultures",cultures);
                 gpsValues.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(gpsValues);
 
