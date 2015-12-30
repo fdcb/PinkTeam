@@ -42,8 +42,8 @@ public class GpsInfoActivity extends AppCompatActivity {
         helpBD = new DataBaseHelper(this);
         bd = helpBD.getWritableDatabase();
 
-       /* cultures=getIntent().getExtras().getStringArrayList("cultures");
-        for ( int i=0;i<cultures.size();i++)
+       cultures=getIntent().getExtras().getStringArrayList("cultures");
+       /* for ( int i=0;i<cultures.size();i++)
             Log.i("GPS ACTIVIDADE",cultures.get(i) );*/
 
         nameCulture="Couve";
@@ -70,7 +70,6 @@ public class GpsInfoActivity extends AppCompatActivity {
         if ( longitude.length()==0){
             Toast.makeText(GpsInfoActivity.this, "Longitude inválida", Toast.LENGTH_SHORT).show();
         }
-
         /*
                 tipo valor=23,4
 

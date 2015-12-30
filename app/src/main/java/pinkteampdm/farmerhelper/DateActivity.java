@@ -44,9 +44,8 @@ public class DateActivity extends AppCompatActivity {
 
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
-        showDialog(999);
-        Toast.makeText(getApplicationContext(), "YEAHHHH", Toast.LENGTH_SHORT)
-                .show();
+        showDialog(999); // id _of_dialog
+       // Toast.makeText(getApplicationContext(), "YEAHHHH", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -62,9 +61,7 @@ public class DateActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
             // TODO Auto-generated method stub
-            // arg1 = year
-            // arg2 = month
-            // arg3 = day
+            // arg1 = year | arg2 = month | arg3 = day
             // Log.d("dia:", ""+arg1);
             showDate(arg1, arg2 + 1, arg3);
         }
@@ -76,18 +73,6 @@ public class DateActivity extends AppCompatActivity {
     }
 
 
-    public void insertDate(View view){
-      /* if ( helpBD.insertCultureRegistry(db, cultures.get(0), date.getText().toString(), helpBD.no_location) ){
-             Toast.makeText(this, "Foi inserido na BD a DATA", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
-        }
-        helpBD.listCultureRegistry(db);*/
-
-        //String dateComplete=date.getDayOfMonth()+"-"+date.getMonth()+"-"+date.getYear();
-       // Log.i("Date escolhida",datePicker.getDayOfMonth()+"-"+datePicker.getMonth()+1+"-"+datePicker.getYear());
-
-    }
 
 
 }

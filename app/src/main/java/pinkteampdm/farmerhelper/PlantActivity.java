@@ -22,7 +22,6 @@ public class PlantActivity extends AppCompatActivity {
     TextView titlePlant;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-    //DatePicker datePicker;
     Calendar calendar;
     int year, month, day;
 
@@ -39,23 +38,21 @@ public class PlantActivity extends AppCompatActivity {
 
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
-        //datePicker= (DatePicker) findViewById(R.id.date_datePicker);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-
     }
-
+        //buttonYes
     @SuppressWarnings("deprecation")
     public void onClickNextActivity(View view) {
-        showDialog(999);
+        showDialog(123); // id_of_dialog
     }
 
     @Override
     protected Dialog onCreateDialog(int id) {
         // TODO Auto-generated method stub
-        if (id == 999) {
+        if (id == 123) {
             return new DatePickerDialog(this, myDateListener, year, month, day);
         }
         return null;
@@ -65,43 +62,21 @@ public class PlantActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
             // TODO Auto-generated method stub
-            // arg1 = year
-            // arg2 = month
-            // arg3 = day
+            // arg1 = year | arg2 = month |  arg3 = day
             //Log.d("data escolhida :", cultures.size()-1+" "+arg3+"-"+(arg2+1)+"-"+arg1);
-            cultures.add(cultures.size()-1,arg3+"-"+(arg2+1)+"-"+arg1);
+            cultures.add(0,arg3+"-"+(arg2+1)+"-"+arg1 );
             for( int i=0;i<cultures.size();i++)
-                Log.d("CULTURES name: ", cultures.get(i));
+               Log.d("CULTURES name "+i+":", cultures.get(i));
             /*Intent newIntent = new Intent( getApplicationContext(), GpsInfoActivity.class);
             newIntent.putExtra("cultures",cultures);
-            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(newIntent);*/
         }
     };
 
-  /*  private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
-    }*/
-    // buttonYes
-  /*  public void onClickNextActivity(View view){
-        Intent newIntent = new Intent( getApplicationContext(), DateActivity.class);
-        newIntent.putExtra("cultures",cultures);
-        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(newIntent);
-    }*/
     //buttonNo
     public void onClickInsertData(View view) {
         //insert info into db
-     //   if (helpBD.insertCultureRegistry(db, nameCulture, a, b)) {
-            /*Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
-        }
-       helpBD.listCultureRegistry(db);*/
-    /*     for ( int i=0;i<cultures.size();i++)
-            Log.i("Name Culture", cultures.get(i));
-    */
         helpBD.insertCultureRegistry(db, nameCulture, helpBD.no_date, helpBD.no_location);
         if (cultures.size()< 1)
             return;
@@ -112,7 +87,6 @@ public class PlantActivity extends AppCompatActivity {
         meAgain.putExtra("cultures",cultures);
         meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(meAgain);
-   //    }
     }
 }
 

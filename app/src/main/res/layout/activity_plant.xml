@@ -21,7 +21,7 @@
         android:layout_marginBottom="73dp" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+        style="?android:attr/buttonStyle"
         android:id="@+id/buttonYes"
         android:text="@string/yesButton"
         android:drawableLeft="@drawable/sucess"
@@ -34,18 +34,18 @@
         android:textColor="@color/font_button"/>
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+        style="?android:attr/buttonStyle"
         android:id="@+id/buttonNo"
         android:text="@string/noButton"
         android:drawableLeft="@drawable/notsucess1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickInsertData"
-        android:layout_alignEnd="@+id/textView_plant"
         android:layout_below="@+id/textView_plant"
         android:layout_alignBottom="@+id/buttonYes"
         android:background="@drawable/button_style"
-        android:textColor="@color/font_button"/>
+        android:textColor="@color/font_button"
+        android:layout_alignEnd="@+id/textView_plant" />
 
     <ImageView
         android:layout_width="wrap_content"
