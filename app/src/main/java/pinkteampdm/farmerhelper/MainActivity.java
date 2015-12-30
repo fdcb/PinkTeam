@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
      // cultureZone_linearLayout.addView(createNewLinearLayout(createNewTextView(newName), createNewButton()));
         cultureZone_linearLayout.addView(addView);
+        cultureName_aCTextView.setText("");
         cultureZone_scrollView.scrollTo(0, cultureZone_scrollView.getBottom());
     }
 
@@ -138,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickFinalize( View view){
+
+        if(insertedCulturesArray.size()<1){
+            return;
+        }
         Intent newIntent = new Intent( getApplicationContext(),PlantActivity.class);
         newIntent.putExtra("cultures",insertedCulturesArray);
        // newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -33,6 +33,9 @@ public class PlantActivity extends AppCompatActivity {
         cultures=getIntent().getExtras().getStringArrayList("cultures");
         titlePlant=(TextView) findViewById(R.id.textView_plant);
 
+        for( int i=0;i<cultures.size();i++)
+            Log.d("Inicio da app: "+i+":", cultures.get(i));
+
         nameCulture = cultures.get(0);
         titlePlant.setText(titlePlant.getText() + " " + nameCulture + "?");
 
@@ -64,12 +67,15 @@ public class PlantActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             // arg1 = year | arg2 = month |  arg3 = day
             //Log.d("data escolhida :", cultures.size()-1+" "+arg3+"-"+(arg2+1)+"-"+arg1);
-            cultures.add(arg3+"-"+(arg2+1)+"-"+arg1);
             for( int i=0;i<cultures.size();i++)
-               Log.d("CULTURES name "+i+":", cultures.get(i));
+                Log.d("Antes de add data: "+i+":", cultures.get(i));
+           cultures.add(0,arg3+"-"+(arg2+1)+"-"+arg1);
+            for( int i=0;i<cultures.size();i++)
+               Log.d("Depois de add data "+i+":", cultures.get(i));
+            helpBD.listCultureRegistry(db);
             Intent newIntent = new Intent( getApplicationContext(), LocationActivity.class);
             newIntent.putExtra("cultures",cultures);
-            //newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(newIntent);
         }
     };
@@ -78,7 +84,7 @@ public class PlantActivity extends AppCompatActivity {
     public void onClickInsertData(View view) {
         //insert info into db
         helpBD.insertCultureRegistry(db, nameCulture, helpBD.no_date, helpBD.no_location);
-        if (cultures.size()< 1)
+        if (cultures.size()<= 1)
             return;
         cultures.remove(0);
         for ( int i=0;i<cultures.size();i++)
