@@ -33,7 +33,7 @@ public class LocationActivity extends AppCompatActivity {
 
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
-
+        //
         cultures=getIntent().getExtras().getStringArrayList("cultures");
 
         yesButton = (Button) findViewById(R.id.buttonYes);
