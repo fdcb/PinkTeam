@@ -1,6 +1,13 @@
 package pinkteampdm.farmerhelper;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,22 +30,24 @@ public class GpsInfoActivity extends AppCompatActivity {
     EditText longitude;
     TextView res;
 
+
     DataBaseHelper helpBD;
     SQLiteDatabase bd;
 
     String nameCulture;
     String dateCulture;
-    private static final String TAG="InserirDados";
+    private static final String TAG = "InserirDados";
     ArrayList<String> cultures;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gps_info);
 
-        latitude = (EditText) findViewById( R.id.latitude_value);
-        longitude = (EditText) findViewById( R.id.longitude_value);
-        res = (TextView) findViewById( R.id.res_txt);
+        latitude = (EditText) findViewById(R.id.latitude_value);
+        longitude = (EditText) findViewById(R.id.longitude_value);
+        res = (TextView) findViewById(R.id.res_txt);
         helpBD = new DataBaseHelper(this);
         bd = helpBD.getWritableDatabase();
 
@@ -46,8 +55,8 @@ public class GpsInfoActivity extends AppCompatActivity {
        /* for ( int i=0;i<cultures.size();i++)
             Log.i("GPS ACTIVIDADE",cultures.get(i) );*/
 
-        nameCulture="Couve";
-        dateCulture="1";
+        nameCulture = "Couve";
+        dateCulture = "1";
 
        /* SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
         Date data = new Date(0);
@@ -58,6 +67,8 @@ public class GpsInfoActivity extends AppCompatActivity {
         dateCulture = dateFormat.format(data_atual);
        Log.i("Data Cultura","Data: "+dateCulture);*/
     }
+
+
 
     public void insertDataGPS(View view ){
         double inicialValue, value, inicialValue1,value1;

@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private DataBaseHelper dBHelp;
     private String[] cultureNamesArray;
     private Vector<String> insertedCulturesArray;
+    GPSTracker gps;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,26 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter<String> newAdapter = new ArrayAdapter<>(this, R.layout.actv, cultureNamesArray);
         cultureName_aCTextView.setAdapter(newAdapter);
+
+        //GPS Stuff - begin
+        gps = new GPSTracker(MainActivity.this);
+
+        // check if GPS enabled
+        if(gps.canGetLocation()){
+
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        }else{
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+        }
+        //GPS Stuff - end
+
+
     }
 
     public void onClickAddNameButton(View view){
