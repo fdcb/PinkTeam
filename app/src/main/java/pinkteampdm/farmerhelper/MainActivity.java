@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
      // cultureZone_linearLayout.addView(createNewLinearLayout(createNewTextView(newName), createNewButton()));
         cultureZone_linearLayout.addView(addView);
+        cultureName_aCTextView.setText("");
         cultureZone_scrollView.scrollTo(0, cultureZone_scrollView.getBottom());
     }
 
