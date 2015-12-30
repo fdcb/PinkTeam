@@ -20,36 +20,6 @@
         android:gravity="center"
         />
 
-    <Button
-        style="?android:attr/buttonStyle"
-        android:id="@+id/buttonYes"
-        android:text="@string/yesButton"
-        android:drawableLeft="@drawable/sucess"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="locationAutomatic"
-        android:background="@drawable/button_style"
-        android:textColor="@color/font_button"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/textView_chooseCulture"
-        android:layout_marginStart="37dp" />
-
-    <Button
-        style="?android:attr/buttonStyle"
-        android:id="@+id/buttonNo"
-        android:text="@string/noButton"
-        android:drawableLeft="@drawable/notsucess1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="71dp"
-        android:layout_alignBottom="@+id/buttonYes"
-        android:layout_alignEnd="@+id/textView_chooseCulture"
-        android:layout_alignTop="@+id/buttonYes"
-        android:onClick="locationManual"
-        android:background="@drawable/button_style"
-        android:textColor="@color/font_button"
-        />
-
     <ImageView
         android:id="@+id/imageView2"
         android:src="@drawable/farmgps2"
@@ -57,5 +27,40 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView_plant"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/buttonNo"
+            android:text="@string/noButton"
+            android:drawableLeft="@drawable/notsucess1"
+            android:layout_width="99dp"
+            android:layout_height="50dp"
+            android:textSize="18dp"
+            android:onClick="locationManual"
+            android:background="@drawable/button_style"
+            android:textColor="@color/font_button"
+            android:layout_alignTop="@+id/buttonYes"
+            android:layout_alignEnd="@+id/textView_plant" />
+
+        <Button
+            android:id="@+id/buttonYes"
+            android:text="@string/yesButton"
+            android:drawableLeft="@drawable/sucess"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:textSize="18dp"
+            android:onClick="locationAutomatic"
+            android:background="@drawable/button_style"
+            android:textColor="@color/font_button"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/textView_plant" />
+    </LinearLayout>
 
 </RelativeLayout>
