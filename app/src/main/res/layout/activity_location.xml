@@ -21,21 +21,21 @@
         />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+        style="?android:attr/buttonStyle"
         android:id="@+id/buttonYes"
         android:text="@string/yesButton"
         android:drawableLeft="@drawable/sucess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/buttonNo"
         android:onClick="locationAutomatic"
         android:background="@drawable/button_style"
         android:textColor="@color/font_button"
-        />
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView_chooseCulture"
+        android:layout_marginStart="37dp" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+        style="?android:attr/buttonStyle"
         android:id="@+id/buttonNo"
         android:text="@string/noButton"
         android:drawableLeft="@drawable/notsucess1"
@@ -49,5 +49,13 @@
         android:background="@drawable/button_style"
         android:textColor="@color/font_button"
         />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:src="@drawable/farmgps2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
