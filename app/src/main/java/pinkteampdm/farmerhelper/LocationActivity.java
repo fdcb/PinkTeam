@@ -33,7 +33,7 @@ public class LocationActivity extends AppCompatActivity {
 
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
-
+        //
         cultures=getIntent().getExtras().getStringArrayList("cultures");
 
         yesButton = (Button) findViewById(R.id.buttonYes);
@@ -42,20 +42,19 @@ public class LocationActivity extends AppCompatActivity {
 
 
     //   for ( int i=0;i<cultures.size();i++)
-        nameCulture=cultures.get(0);
+        nameCulture=cultures.get(1);
             titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
     }
     //buttonYes
     public void locationAutomatic( View view){
         System.out.println("YESSS");
         //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
-        //falta cena do andre
 
-        helpBD.insertCultureRegistry(db, nameCulture, helpBD.no_date,helpBD.no_location);
-        if (cultures.size()< 2)
+        helpBD.insertCultureRegistry(db, nameCulture, cultures.get(0),helpBD.no_location);
+        if (cultures.size()<=2)
             return;
         cultures.remove(0);
-        cultures.remove(1);
+        cultures.remove(0);
         for ( int i=0;i<cultures.size();i++)
             Log.i("Name Culture", cultures.get(i));
         Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
