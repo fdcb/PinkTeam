@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -26,7 +25,6 @@ public class LocationActivity extends AppCompatActivity {
     String nameCulture;
     DataBaseHelper helpBD;
     SQLiteDatabase db;
-    GPSTracker gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,24 +41,9 @@ public class LocationActivity extends AppCompatActivity {
         titleChoose = (TextView) findViewById(R.id.textView_chooseCulture);
 
 
-        //   for ( int i=0;i<cultures.size();i++)
+    //   for ( int i=0;i<cultures.size();i++)
         nameCulture=cultures.get(1);
             titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
-
-        gps = new GPSTracker(LocationActivity.this);
-        // check if GPS enabled
-        if(gps.canGetLocation()){
-
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
-
-            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
-        }
     }
     //buttonYes
     public void locationAutomatic( View view){

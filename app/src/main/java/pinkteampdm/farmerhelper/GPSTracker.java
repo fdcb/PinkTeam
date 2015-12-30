@@ -1,5 +1,6 @@
 package pinkteampdm.farmerhelper;
 
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Service;
@@ -16,10 +17,7 @@ import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
-/**
- * Created by Vanessa on 30/12/2015.
- */
-public class GPSTracker extends Service implements LocationListener  {
+public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
 
@@ -137,6 +135,7 @@ public class GPSTracker extends Service implements LocationListener  {
         if(location != null){
             latitude = location.getLatitude();
         }
+
         // return latitude
         return latitude;
     }
@@ -148,6 +147,7 @@ public class GPSTracker extends Service implements LocationListener  {
         if(location != null){
             longitude = location.getLongitude();
         }
+
         // return longitude
         return longitude;
     }
@@ -212,4 +212,5 @@ public class GPSTracker extends Service implements LocationListener  {
     public IBinder onBind(Intent arg0) {
         return null;
     }
+
 }
