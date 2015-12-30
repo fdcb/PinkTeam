@@ -64,13 +64,13 @@ public class PlantActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             // arg1 = year | arg2 = month |  arg3 = day
             //Log.d("data escolhida :", cultures.size()-1+" "+arg3+"-"+(arg2+1)+"-"+arg1);
-            cultures.add(0,arg3+"-"+(arg2+1)+"-"+arg1 );
+            cultures.add(arg3+"-"+(arg2+1)+"-"+arg1);
             for( int i=0;i<cultures.size();i++)
                Log.d("CULTURES name "+i+":", cultures.get(i));
-            /*Intent newIntent = new Intent( getApplicationContext(), GpsInfoActivity.class);
+            Intent newIntent = new Intent( getApplicationContext(), LocationActivity.class);
             newIntent.putExtra("cultures",cultures);
             //newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(newIntent);*/
+            startActivity(newIntent);
         }
     };
 

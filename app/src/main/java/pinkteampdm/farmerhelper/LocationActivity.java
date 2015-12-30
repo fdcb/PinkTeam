@@ -45,16 +45,17 @@ public class LocationActivity extends AppCompatActivity {
         nameCulture=cultures.get(0);
             titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
     }
-
+    //buttonYes
     public void locationAutomatic( View view){
         System.out.println("YESSS");
         //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
         //falta cena do andre
 
         helpBD.insertCultureRegistry(db, nameCulture, helpBD.no_date,helpBD.no_location);
-        if (cultures.size()< 1)
+        if (cultures.size()< 2)
             return;
         cultures.remove(0);
+        cultures.remove(1);
         for ( int i=0;i<cultures.size();i++)
             Log.i("Name Culture", cultures.get(i));
         Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
@@ -62,7 +63,7 @@ public class LocationActivity extends AppCompatActivity {
         meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(meAgain);
     }
-
+    //buttonNo
     public void locationManual( View view){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

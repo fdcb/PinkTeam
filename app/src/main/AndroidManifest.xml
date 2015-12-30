@@ -33,10 +33,6 @@
             android:name=".PlantActivity"
             android:label="@string/title_activity_plant" >
         </activity>
-        <activity
-            android:name=".DateActivity"
-            android:label="@string/title_activity_date" >
-        </activity>
     </application>
 
 </manifest>
