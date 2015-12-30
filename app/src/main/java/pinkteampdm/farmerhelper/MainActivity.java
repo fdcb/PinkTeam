@@ -3,6 +3,7 @@ package pinkteampdm.farmerhelper;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
                 toast.show();
+                break;
             }
 
         insertedCulturesArray.addElement(newName);
@@ -91,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                for( int i = 0; i < insertedCulturesArray.size(); i++)
-                    if(insertedCulturesArray.elementAt(i).equals(textOut.getText())){
+                for (int i = 0; i < insertedCulturesArray.size(); i++)
+                    if (insertedCulturesArray.elementAt(i).equals(textOut.getText())) {
                         insertedCulturesArray.removeElementAt(i);
                         break;
                     }
@@ -119,6 +122,15 @@ public class MainActivity extends AppCompatActivity {
     public void onClickFinalize( View view){
 
         if(insertedCulturesArray.size()<1){
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.toasts_incomplete, (ViewGroup) findViewById(R.id.toast_layout_incomplete));
+            TextView text = (TextView) layout.findViewById(R.id.text);
+            text.setText(R.string.nothing_inserted_yet);
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setView(layout);
+            toast.show();
             return;
         }
         Intent newIntent = new Intent( getApplicationContext(),PlantActivity.class);
