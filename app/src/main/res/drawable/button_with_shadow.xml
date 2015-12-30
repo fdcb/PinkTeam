@@ -3,6 +3,8 @@
     <item android:drawable="@drawable/button_shadow"/>
     <item
         android:drawable="@drawable/button_normal"
-        android:bottom="9px"
-        android:right="6px"/>
+        android:bottom="7px"
+        android:right="5px"
+        android:left="3px"
+        android:top="1px"/>
 </layer-list>

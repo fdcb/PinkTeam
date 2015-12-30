@@ -3,8 +3,5 @@
     <solid android:color="@color/bgPressed_button"/>
     <stroke android:width="3px" android:color="@color/borderPressed_button"/>
     <corners
-        android:bottomRightRadius="10dp"
-        android:bottomLeftRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"/>
+        android:radius="5dp"/>
 </shape>

@@ -3,6 +3,8 @@
     <item android:drawable="@drawable/round_button_shadow"/>
     <item
         android:drawable="@drawable/round_button"
-        android:bottom="6px"
-        android:right="3px"/>
+        android:bottom="7px"
+        android:right="5px"
+        android:left="3px"
+        android:top="1px"/>
 </layer-list>

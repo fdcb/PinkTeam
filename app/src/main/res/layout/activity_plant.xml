@@ -21,30 +21,29 @@
         android:layout_marginBottom="73dp" />
 
     <Button
-        style="?android:attr/buttonStyle"
         android:id="@+id/buttonYes"
         android:text="@string/yesButton"
         android:drawableLeft="@drawable/sucess"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="18dp"
         android:onClick="onClickNextActivity"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/textView_plant"
         android:background="@drawable/button_style"
-        android:textColor="@color/font_button"/>
+        android:textColor="@color/font_button"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView_plant" />
 
     <Button
-        style="?android:attr/buttonStyle"
         android:id="@+id/buttonNo"
         android:text="@string/noButton"
         android:drawableLeft="@drawable/notsucess1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="18dp"
         android:onClick="onClickInsertData"
-        android:layout_below="@+id/textView_plant"
-        android:layout_alignBottom="@+id/buttonYes"
         android:background="@drawable/button_style"
         android:textColor="@color/font_button"
+        android:layout_alignTop="@+id/buttonYes"
         android:layout_alignEnd="@+id/textView_plant" />
 
     <ImageView
