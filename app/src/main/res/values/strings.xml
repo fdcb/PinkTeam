@@ -5,6 +5,7 @@
     <string name="alreadyExistsCulture">\nJá adicionou essa cultura!</string>
     <string name="cultureName">Nome da sua cultura</string>
     <string name="action_settings">Settings</string>
+    <string name="insert_culture">Inserir Nova Cultura</string>
     <string name="errorNoCulture">Cultura inexistente!\nInsira uma cultura presente na lista.</string>
     <string name="yesButton">Sim</string>
     <string name="noButton">Não</string>

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.Vector;
+
 public class DataBaseHelper extends SQLiteOpenHelper{
 
     private static final String DATABASE_NAME = "AgriculturaProj.db";
@@ -836,6 +838,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return newCursor.getInt(newCursor.getColumnIndex(COLUMN1_CULTURE_ID));
     }
 
+    public String getCultureName(SQLiteDatabase db, int id){
+        Cursor newCursor = db.rawQuery("SELECT " + COLUMN2_CULTURE_NAME + " FROM " + TABLE_CULTURE + " WHERE " + COLUMN1_CULTURE_ID + "=?;", new String[]{String.valueOf(id)}, null);
+        newCursor.moveToFirst();
+        return newCursor.getString(newCursor.getColumnIndex(COLUMN2_CULTURE_NAME));
+    }
+
     public int getActivityID(SQLiteDatabase db, String name){
         Cursor newCursor = db.rawQuery("SELECT " + COLUMN1_ACTIVITY_ID + " FROM " + TABLE_ACTIVITY + " WHERE " + COLUMN2_ACTIVITY_NAME + "=?;", new String[]{name}, null);
         newCursor.moveToFirst();
@@ -872,5 +880,29 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             Log.d("Table CultReistry", "GPS: " + newCursor.getString(3) );
         }
 
+    }
+
+    public String[] getCultureRegistryName(SQLiteDatabase db){
+        Cursor newCursor = db.query(TABLE_CULTUREREGISTRY,
+                new String[]{COLUMN1_CULTUREREGISTRY_ID, COLUMN2_CULTUREREGISTRY_CULTUREID,
+                             COLUMN3_CULTUREREGISTRY_DATE, COLUMN4_CULTUREREGISTRY_GPS },
+                             null,null,null,null,null);
+        if(newCursor.getCount() > 0){
+            String[] list = new String[newCursor.getCount()];
+            int i = 0;
+            while(newCursor.moveToNext()){
+              /*  Log.d("Table CultReistry", "\n\n---------Nova Linha-------");
+                Log.d("Table CultRegistry", "ID: " + newCursor.getString(0) );
+                Log.d("Table CultRegistry", "CultID: " + newCursor.getString(1) );
+                Log.d("Table CultReistry", "Date : " + newCursor.getString(2) );
+                Log.d("Table CultReistry", "GPS: " + newCursor.getString(3) ); */
+                list[i] = getCultureName(db, newCursor.getInt(
+                        newCursor.getColumnIndex(COLUMN2_CULTUREREGISTRY_CULTUREID)));
+                i++;
+            }
+            newCursor.close();
+            return list;
+        }
+        return new String[]{};
     }
 }

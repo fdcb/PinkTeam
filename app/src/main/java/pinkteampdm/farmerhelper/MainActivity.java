@@ -38,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dBHelp = new DataBaseHelper(this);
+        oSQLiteDB = dBHelp.getWritableDatabase();
+
+        if((dBHelp.getCultureRegistryName(oSQLiteDB)).length!=0){
+            Intent newIntent = getIntent();
+            if(!newIntent.hasExtra("Activity")){
+            Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
+            meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(meAgain);
+            return;
+            }
+        }
         setContentView(R.layout.activity_main);
         cultureZone_linearLayout = (LinearLayout)findViewById(R.id.linearLayout_nomes);
         insertedCulturesArray = new Vector<>();
@@ -45,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         cultureName_aCTextView = (AutoCompleteTextView)findViewById(R.id.editText_NomeCultura);
         cultureZone_scrollView = (ScrollView)findViewById(R.id.scrollView_zonaNomes);
 
-        dBHelp = new DataBaseHelper(this);
-        oSQLiteDB = dBHelp.getWritableDatabase();
+
 
         cultureNamesArray = dBHelp.getListCultureNames(oSQLiteDB);
 
