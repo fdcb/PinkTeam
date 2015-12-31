@@ -37,6 +37,10 @@
             android:name=".PlantActivity"
             android:label="@string/title_activity_plant" >
         </activity>
+        <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar" >
+        </activity>
     </application>
 
 </manifest>

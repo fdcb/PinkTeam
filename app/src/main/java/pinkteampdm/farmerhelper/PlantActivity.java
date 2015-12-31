@@ -93,6 +93,7 @@ public class PlantActivity extends AppCompatActivity {
         meAgain.putExtra("cultures",cultures);
         meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(meAgain);
+        helpBD.listCultureRegistry(db);
     }
 }
 
