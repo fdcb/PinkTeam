@@ -84,8 +84,11 @@ public class PlantActivity extends AppCompatActivity {
     public void onClickInsertData(View view) {
         //insert info into db
         helpBD.insertCultureRegistry(db, nameCulture, helpBD.no_date, helpBD.no_location);
-        if (cultures.size()<= 1)
-            return;
+        if (cultures.size()<= 1){
+            Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
+            meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(meAgain);
+        }
         cultures.remove(0);
         for ( int i=0;i<cultures.size();i++)
             Log.i("Name Culture", cultures.get(i));

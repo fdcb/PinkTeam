@@ -44,7 +44,7 @@ public class LocationActivity extends AppCompatActivity {
         titleChoose = (TextView) findViewById(R.id.textView_chooseCulture);
 
         nameCulture=cultures.get(1);
-            titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
+            titleChoose.setText(titleChoose.getText() + " " + nameCulture + "?");
 
         gps = new GPSTracker(LocationActivity.this);
 
@@ -64,8 +64,11 @@ public class LocationActivity extends AppCompatActivity {
 
         helpBD.insertCultureRegistry(db, nameCulture, cultures.get(0),""+latitude+","+longitude);
         helpBD.listCultureRegistry(db);
-        if (cultures.size()<=2)
-            return;
+        if (cultures.size()<=2){
+            Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
+            meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(meAgain);
+        }
         cultures.remove(0);
         cultures.remove(0);
         for ( int i=0;i<cultures.size();i++)

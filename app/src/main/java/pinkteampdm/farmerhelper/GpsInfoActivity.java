@@ -105,26 +105,19 @@ public class GpsInfoActivity extends AppCompatActivity {
         res.setText("Latitude:"+degree+"º "+minutes+"'"+seconds+"''\n"+"Longitude: "+degree1+"º "+minutes1+"'"+seconds1+"''");
 
         helpBD.insertCultureRegistry(bd,cultures.get(1), cultures.get(0), inicialValue+","+inicialValue1);
-       /* Log.i(TAG,"Já foste "+sucess);
-        if ( sucess ) {
-            Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
 
-        }*/
         helpBD.listCultureRegistry(bd);
-        if (cultures.size()<=2)
-            return;
+        if (cultures.size()<=2) {
+            Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
+            meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(meAgain);
+        }
         cultures.remove(0);
         cultures.remove(0);
         for ( int i=0;i<cultures.size();i++)
             Log.i("Name Culture", cultures.get(i));
-        Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
-        meAgain.putExtra("cultures", cultures);
-        meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(meAgain);
+
+
 
     }
 
