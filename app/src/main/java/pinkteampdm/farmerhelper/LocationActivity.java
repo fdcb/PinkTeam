@@ -62,22 +62,9 @@ public class LocationActivity extends AppCompatActivity {
         //System.out.println("YESSS");
         //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
 
-        helpBD.insertCultureRegistry(db, nameCulture, cultures.get(0),""+latitude+","+longitude);
+        helpBD.insertCultureRegistry(db, nameCulture, cultures.get(0), "" + latitude + "," + longitude);
         helpBD.listCultureRegistry(db);
-        if (cultures.size()<=2){
-            Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
-            meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(meAgain);
-            return;
-        }
-
-        cultures.remove(0);
-        cultures.remove(0);
-
-        Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
-        meAgain.putExtra("cultures",cultures);
-        meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(meAgain);
+        moveON();
     }
     //buttonNo
     public void locationManual( View view){
@@ -107,10 +94,28 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                moveON();
             }
         });
 
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    private void moveON(){
+        if (cultures.size()<=2){
+            Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
+            meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(meAgain);
+            return;
+        }
+
+        cultures.remove(0);
+        cultures.remove(0);
+
+        Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
+        meAgain.putExtra("cultures",cultures);
+        meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(meAgain);
     }
 }
