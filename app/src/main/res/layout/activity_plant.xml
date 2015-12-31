@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="center"
-        android:layout_above="@+id/buttonYes"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="75dp" />
@@ -26,8 +25,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/img_culture"
         android:src="@drawable/culture"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/textView_plant" />
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:orientation="horizontal"
