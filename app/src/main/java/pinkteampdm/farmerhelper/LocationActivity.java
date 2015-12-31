@@ -68,11 +68,12 @@ public class LocationActivity extends AppCompatActivity {
             Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
             meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(meAgain);
+            return;
         }
+
         cultures.remove(0);
         cultures.remove(0);
-        for ( int i=0;i<cultures.size();i++)
-            Log.i("Name Culture", cultures.get(i));
+
         Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
         meAgain.putExtra("cultures",cultures);
         meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -88,6 +88,7 @@ public class PlantActivity extends AppCompatActivity {
             Intent meAgain = new Intent(getApplicationContext(), CalendarActivity.class);
             meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(meAgain);
+            return;
         }
         cultures.remove(0);
         for ( int i=0;i<cultures.size();i++)
