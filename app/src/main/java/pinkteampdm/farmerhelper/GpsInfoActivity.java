@@ -2,6 +2,7 @@ package pinkteampdm.farmerhelper;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
@@ -55,17 +56,9 @@ public class GpsInfoActivity extends AppCompatActivity {
        /* for ( int i=0;i<cultures.size();i++)
             Log.i("GPS ACTIVIDADE",cultures.get(i) );*/
 
-        nameCulture = "Couve";
-        dateCulture = "1";
+       // nameCulture = "Couve";
+        //dateCulture = "1";
 
-       /* SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
-        Date data = new Date(0);
-
-        Calendar  cal = Calendar.getInstance();
-        cal.setTime(data);
-        Date data_atual = (Date) cal.getTime();
-        dateCulture = dateFormat.format(data_atual);
-       Log.i("Data Cultura","Data: "+dateCulture);*/
     }
 
 
@@ -111,8 +104,8 @@ public class GpsInfoActivity extends AppCompatActivity {
         seconds1=(int)value1;
         res.setText("Latitude:"+degree+"º "+minutes+"'"+seconds+"''\n"+"Longitude: "+degree1+"º "+minutes1+"'"+seconds1+"''");
 
-        sucess=helpBD.insertCultureRegistry(bd, nameCulture, dateCulture, inicialValue+","+inicialValue1);
-        Log.i(TAG,"Já foste"+sucess);
+        helpBD.insertCultureRegistry(bd,cultures.get(1), cultures.get(0), inicialValue+","+inicialValue1);
+       /* Log.i(TAG,"Já foste "+sucess);
         if ( sucess ) {
             Toast.makeText(this, "Foi inserido na BD", Toast.LENGTH_LONG).show();
         }
@@ -120,7 +113,18 @@ public class GpsInfoActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Nada foi inserido", Toast.LENGTH_LONG).show();
 
-        }
+        }*/
+        helpBD.listCultureRegistry(bd);
+        if (cultures.size()<=2)
+            return;
+        cultures.remove(0);
+        cultures.remove(0);
+        for ( int i=0;i<cultures.size();i++)
+            Log.i("Name Culture", cultures.get(i));
+        Intent meAgain = new Intent( getApplicationContext(), PlantActivity.class);
+        meAgain.putExtra("cultures", cultures);
+        meAgain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(meAgain);
 
     }
 

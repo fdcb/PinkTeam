@@ -43,7 +43,6 @@ public class LocationActivity extends AppCompatActivity {
         noButton = (Button) findViewById(R.id.buttonNo);
         titleChoose = (TextView) findViewById(R.id.textView_chooseCulture);
 
-    //   for ( int i=0;i<cultures.size();i++)
         nameCulture=cultures.get(1);
             titleChoose.setText(titleChoose.getText()+" "+nameCulture+"?");
 
@@ -53,7 +52,6 @@ public class LocationActivity extends AppCompatActivity {
         if(gps.canGetLocation()){
             latitude = gps.getLatitude();
             longitude = gps.getLongitude();
-            //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
         }else{
             // can't get location because GPS/Network is not enabled, so we tell to user to enable GPS/network in settings
             gps.showSettingsAlert();
@@ -61,7 +59,7 @@ public class LocationActivity extends AppCompatActivity {
     }
     //buttonYes
     public void locationAutomatic( View view){
-        System.out.println("YESSS");
+        //System.out.println("YESSS");
         //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
 
         helpBD.insertCultureRegistry(db, nameCulture, cultures.get(0),""+latitude+","+longitude);
