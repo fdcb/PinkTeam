@@ -76,26 +76,40 @@ public class CalendarActivity extends AppCompatActivity {
         sqdb = dbHelp.getWritableDatabase();
 
         registeredCultures = dbHelp.getCultureRegistryName(sqdb);
-
-        for(int i = 0; i< registeredCultures.length; i++){
-            Vector<String> act = dbHelp.getActivitiesForMonthCulture(sqdb, registeredCultures[i],
-                                                                        month_name, week);
-            for(int j = 0; j< act.size(); j++){
-                Log.d(""+registeredCultures, act.elementAt(j));
-                LayoutInflater layoutInflater = (LayoutInflater)
-                        getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-                View addView = layoutInflater.inflate(R.layout.todo, null);
-                TextView actCult = (TextView)addView.findViewById(R.id.actCult_TextView);
-                actCult.setText(act.elementAt(j) + " " + registeredCultures[i]);
-                tab.addView(addView);
-            }
-        }
+        addActivities();
    /*   tab1 = (LinearLayout)findViewById(R.id.tab2);
         tab2 = (LinearLayout)findViewById(R.id.tab3);
 
         tab1.setVisibility(View.INVISIBLE);
         tab2.setVisibility(View.INVISIBLE);*/
+    }
+
+    private void addActivities(){
+        for(int i = 0; i< registeredCultures.length; i++){
+            Vector<Culture> act = dbHelp.getActivitiesForMonthCulture(sqdb, registeredCultures[i],
+                    month_name, week);
+            for(int j = 0; j< act.size(); j++){
+                addViewAct(registeredCultures[i], act.elementAt(j).getAct_name(),
+                        act.elementAt(j).getMoon(),act.elementAt(j).getPlaceString(),
+                        act.elementAt(j).getCountry_zone());
+            }
+        }
+    }
+
+    private void addViewAct(String culture, String activity, String moon, String local, String place){
+        LayoutInflater layoutInflater = (LayoutInflater)
+                getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View addView = layoutInflater.inflate(R.layout.todo, null);
+        TextView actCult = (TextView)addView.findViewById(R.id.actCult_TextView);
+        actCult.setText(activity + " " + culture);
+        TextView moonTV = (TextView)addView.findViewById(R.id.lua_textView);
+        moonTV.setText(moon);
+        TextView localTV = (TextView)addView.findViewById(R.id.local_textView);
+        localTV.setText(local);
+        TextView placeTV = (TextView)addView.findViewById(R.id.zone_TextView);
+        placeTV.setText(place);
+        tab.addView(addView);
     }
 
     private int auxProcessor(int aux){
