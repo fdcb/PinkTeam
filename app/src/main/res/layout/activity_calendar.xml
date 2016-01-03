@@ -9,6 +9,7 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:id="@+id/horizontalScrollView" >
 
         <LinearLayout
@@ -81,10 +82,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/horizontalScrollView">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/work9"/>
+        android:layout_below="@+id/horizontalScrollView"
+        android:weightSum="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView2"
+            android:layout_gravity="center_horizontal" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/act_LinearLayout">
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView"
+        android:layout_below="@+id/horizontalScrollView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>

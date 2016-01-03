@@ -37,5 +37,4 @@
     <color name="shadow_button_border">#1da7a7a7</color>
     <string name="title_activity_calendar">CalendarActivity</string>
 
-    <string name="hello_world">Hello world!</string>
 </resources>

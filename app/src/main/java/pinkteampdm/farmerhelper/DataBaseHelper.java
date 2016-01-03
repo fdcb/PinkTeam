@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.List;
 import java.util.Vector;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
@@ -64,7 +65,9 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private final String []zone = new String[]{"Normal", "Estufa", "Horta","Jardim"};
     private final String []place = new String[]{"Sul", "Norte/Centro"};
     private final String []moons = new String[]{"Minguante", "Crescente"};
-    private final String []months = new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+    private final String []months = new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio",
+                                                 "Junho", "Julho", "Agosto", "Setembro", "Outubro",
+                                                 "Novembro", "Dezembro"};
 
     public final String no_location = "sem_gps";
     public final String no_date = "sem_data";
@@ -76,7 +79,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                         +COLUMN2_CULTUREINFO_CULTUREID+ " INTEGER, "
                         +COLUMN3_CULTUREREGISTRY_DATE+ " DATE, "
                         +COLUMN4_CULTUREREGISTRY_GPS+ " VARCHAR(10), "
-                        + " FOREIGN KEY(" +COLUMN2_CULTUREREGISTRY_CULTUREID+ ") REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ ")); ";
+                        + " FOREIGN KEY(" +COLUMN2_CULTUREREGISTRY_CULTUREID+ ")" +
+                          " REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ ")); ";
 
     private static final String CULTUREREGISTRY_TABLE_DROP =
         "DROP TABLE " +TABLE_CULTUREREGISTRY+ ";";
@@ -119,7 +123,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                         +COLUMN4_CULTUREINFO_MOON+ " VARCHAR(30), "
                         +COLUMN5_CULTUREINFO_ZONE+ " VARCHAR(30), "
                         +COLUMN6_CULTUREINFO_WEEK+ " INT, "
-                        + " FOREIGN KEY(" +COLUMN2_CULTUREINFO_CULTUREID+ ") REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ "));";
+                        + " FOREIGN KEY(" +COLUMN2_CULTUREINFO_CULTUREID+ ")" +
+                          " REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ "));";
 
     private static final String CULTUREINFO_TABLE_DROP =
         "DROP TABLE " +TABLE_CULTUREINFO+ ";";
@@ -182,8 +187,10 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         "CREATE TABLE " +TABLE_PLAGUECULTURE+ "("
                         +COLUMN1_PLAGUECULTURE_PLAGUEID+ " INTEGER,"
                         +COLUMN2_PLAGUECULTURE_CULTUREID+ " INTEGER,"
-                        + " FOREIGN KEY (" +COLUMN1_PLAGUECULTURE_PLAGUEID+ ") REFERENCES " +TABLE_PLAGUE+ " (" +COLUMN1_PLAGUE_ID+ "),"
-                        + " FOREIGN KEY (" +COLUMN2_PLAGUECULTURE_CULTUREID+ ") REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ ")); ";
+                        + " FOREIGN KEY (" +COLUMN1_PLAGUECULTURE_PLAGUEID+ ")" +
+                          " REFERENCES " +TABLE_PLAGUE+ " (" +COLUMN1_PLAGUE_ID+ "),"
+                        + " FOREIGN KEY (" +COLUMN2_PLAGUECULTURE_CULTUREID+ ")" +
+                          " REFERENCES " +TABLE_CULTURE+ " (" +COLUMN1_CULTURE_ID+ ")); ";
 
 
     private static final String PLAGUECULTURE_TABLE_DROP =
@@ -203,19 +210,21 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         "CREATE TABLE " +TABLE_CULTUREINFOACTIVITY+ "("
                         +COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID+ " INTEGER,"
                         +COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID+ " INTEGER,"
-                        + " FOREIGN KEY (" +COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID+ ") REFERENCES " +TABLE_ACTIVITY+ "(" +COLUMN1_ACTIVITY_ID+ "),"
-                        + " FOREIGN KEY (" +COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID+ ") REFERENCES " +TABLE_CULTUREINFO+ "(" +COLUMN1_CULTUREINFO_ID+ ")); ";
+                        + " FOREIGN KEY (" +COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID+ ")" +
+                          " REFERENCES " +TABLE_ACTIVITY+ "(" +COLUMN1_ACTIVITY_ID+ "),"
+                        + " FOREIGN KEY (" +COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID+ ")" +
+                          " REFERENCES " +TABLE_CULTUREINFO+ "(" +COLUMN1_CULTUREINFO_ID+ ")); ";
 
     private static final String CULTUREINFOACTIVITY_TABLE_DROP =
         "DROP TABLE " +TABLE_CULTUREINFOACTIVITY+ ";";
 
     private static final String CULTUREINFOACTIVITY_TABLE_TEMP =
-        "CREATE TEMP TABLE CultureInfoActivityAux AS SELECT * FROM " +TABLE_CULTUREINFOACTIVITY+ ";";
+        "CREATE TEMP TABLE CultureInfoActAux AS SELECT * FROM " +TABLE_CULTUREINFOACTIVITY+ ";";
 
     private static final String CULTUREINFOACTIVITY_TABLE_INSERT =
         "INSERT INTO " +TABLE_CULTUREINFOACTIVITY+ " ("
                        +COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID+ ", "
-                       +COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID+ ") SELECT* FROM CultureInfoActivityAux;";
+                       +COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID+ ") SELECT * FROM CultureInfoActAux;";
 
 
      /*              Queries related to CultureInfoZone table                */
@@ -223,8 +232,10 @@ public class DataBaseHelper extends SQLiteOpenHelper{
          "CREATE TABLE " +TABLE_CULTUREINFOZONE+ "("
                          +COLUMN1_CULTUREINFOZONE_ZONEID+ " INTEGER,"
                          +COLUMN2_CULTUREINFOZONE_CULTUREINFOID+ " INTEGER,"
-                         + " FOREIGN KEY (" +COLUMN1_CULTUREINFOZONE_ZONEID+ ") REFERENCES " +TABLE_ZONE+ "(" +COLUMN1_ZONE_ID+ "),"
-                         + " FOREIGN KEY (" +COLUMN2_CULTUREINFOZONE_CULTUREINFOID+ ") REFERENCES " +TABLE_CULTUREINFO+ "(" +COLUMN1_CULTUREINFO_ID+ ")); ";
+                         + " FOREIGN KEY (" +COLUMN1_CULTUREINFOZONE_ZONEID+ ")" +
+                           " REFERENCES " +TABLE_ZONE+ "(" +COLUMN1_ZONE_ID+ "),"
+                         + " FOREIGN KEY (" +COLUMN2_CULTUREINFOZONE_CULTUREINFOID+ ")" +
+                           " REFERENCES " +TABLE_CULTUREINFO+ "(" +COLUMN1_CULTUREINFO_ID+ ")); ";
 
     private static final String CULTUREINFOZONE_TABLE_DROP =
         "DROP TABLE " +TABLE_CULTUREINFOZONE+ ";";
@@ -345,7 +356,9 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
     private void insertZone(SQLiteDatabase db, String name, String description){
-        db.execSQL("INSERT INTO " + TABLE_ZONE + "(" + COLUMN2_ZONE_NAME + "," + COLUMN3_ZONE_DESCRIPTION + ") VALUES (\"" + name + "\", \"" + description + "\");");
+        db.execSQL("INSERT INTO " + TABLE_ZONE + "(" + COLUMN2_ZONE_NAME + ","
+                    + COLUMN3_ZONE_DESCRIPTION + ") VALUES (\""
+                    + name + "\", \"" + description + "\");");
     }
 
     private void insertAllCultures(SQLiteDatabase db){
@@ -468,7 +481,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
     private void insertCulture(SQLiteDatabase db, String name){
-        db.execSQL("INSERT INTO " +TABLE_CULTURE+ "(" +COLUMN2_CULTURE_NAME+ ") VALUES (\"" +name+"\");");
+        db.execSQL("INSERT INTO " +TABLE_CULTURE+ "("
+                                  +COLUMN2_CULTURE_NAME+ ") VALUES (\"" +name+"\");");
     }
 
     private void insertAllActivities(SQLiteDatabase db){
@@ -493,12 +507,15 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         insertActivity(db, "Arrotear", "Limpar/Cortar o mato para plantar.");
         insertActivity(db, "Cortar", "Cortar Madeira.");
         insertActivity(db, "Limpeza", "Limpar lagar.");
-        insertActivity(db, "Mergulhia das vinhas", "Tipo de multiplicação vegetativa que consiste em dobrar um ramo da planta-mãe até enterrá-lo no solo. Quando está enraizada pode separar-se da planta-mãe.");
+        insertActivity(db, "Mergulhia das vinhas", "Tipo de multiplicação vegetativa que consiste em " +
+                            "dobrar um ramo da planta-mãe até enterrá-lo no solo. " +
+                            "Quando está enraizada pode separar-se da planta-mãe.");
 
     }
 
     private void insertActivity(SQLiteDatabase db, String name, String description){
-        db.execSQL("INSERT INTO " +TABLE_ACTIVITY+ "(" +COLUMN2_ACTIVITY_NAME+ ", " +COLUMN3_ACTIVITY_DESCRIPTION+") VALUES (\"" +name+ "\", \""  +description+ "\");");
+        db.execSQL("INSERT INTO " +TABLE_ACTIVITY+ "(" +COLUMN2_ACTIVITY_NAME+ ", "
+                +COLUMN3_ACTIVITY_DESCRIPTION+") VALUES (\"" +name+ "\", \""  +description+ "\");");
     }
 
     private void insertAllInfoCultureActivities(SQLiteDatabase db){
@@ -797,7 +814,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     }
 
-    private long insertInfoCulture(SQLiteDatabase db, String cultureName, String month, String moonFase, String countryZone, int week){
+    private long insertInfoCulture(SQLiteDatabase db, String cultureName, String month,
+                                   String moonFase, String countryZone, int week){
         ContentValues newCV = new ContentValues();
         newCV.put(COLUMN2_CULTUREINFO_CULTUREID,getCultureID(db,cultureName));
         newCV.put(COLUMN3_CULTUREINFO_MONTH, month);
@@ -808,15 +826,20 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
     private void insertActivityInfo(SQLiteDatabase db, String name, long infoCultureID){
-        db.execSQL("INSERT INTO " + TABLE_CULTUREINFOACTIVITY + "(" + COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID + ", " + COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID + ") VALUES (\"" + getActivityID(db, name) + "\", \"" + infoCultureID + "\");");
+        db.execSQL("INSERT INTO " + TABLE_CULTUREINFOACTIVITY + "("
+                + COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID + ", " + COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID +
+                ") VALUES (\"" + getActivityID(db, name) + "\", \"" + infoCultureID + "\");");
     }
 
     private void insertZoneInfo(SQLiteDatabase db, String name, long infoCultureID){
-        db.execSQL("INSERT INTO " + TABLE_CULTUREINFOZONE + "(" + COLUMN1_CULTUREINFOZONE_ZONEID + ", " + COLUMN2_CULTUREINFOZONE_CULTUREINFOID + ") VALUES (\"" + getZoneID(db, name) + "\", \"" + infoCultureID + "\");");
+        db.execSQL("INSERT INTO " + TABLE_CULTUREINFOZONE + "(" + COLUMN1_CULTUREINFOZONE_ZONEID +
+                ", " + COLUMN2_CULTUREINFOZONE_CULTUREINFOID + ") VALUES (\""
+                + getZoneID(db, name) + "\", \"" + infoCultureID + "\");");
     }
 
     public String[] getListCultureNames(SQLiteDatabase db){
-        Cursor newCursor = db.query(TABLE_CULTURE, new String[]{COLUMN2_CULTURE_NAME},null,null,null,null,null);
+        Cursor newCursor = db.query(TABLE_CULTURE, new String[]{COLUMN2_CULTURE_NAME},
+                null,null,null,null,null);
         if(newCursor.getCount() > 0){
             String[] list = new String[newCursor.getCount()];
             //  newCursor.moveToFirst();
@@ -833,30 +856,53 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
     public int getCultureID(SQLiteDatabase db, String name){
-        Cursor newCursor = db.rawQuery("SELECT " + COLUMN1_CULTURE_ID + " FROM " + TABLE_CULTURE + " WHERE " + COLUMN2_CULTURE_NAME + "=?;", new String[]{name}, null);
+        Cursor newCursor = db.rawQuery(
+                "SELECT " + COLUMN1_CULTURE_ID
+              + " FROM " + TABLE_CULTURE
+              + " WHERE " + COLUMN2_CULTURE_NAME + "=?;", new String[]{name}, null);
+
         newCursor.moveToFirst();
         return newCursor.getInt(newCursor.getColumnIndex(COLUMN1_CULTURE_ID));
     }
 
     public String getCultureName(SQLiteDatabase db, int id){
-        Cursor newCursor = db.rawQuery("SELECT " + COLUMN2_CULTURE_NAME + " FROM " + TABLE_CULTURE + " WHERE " + COLUMN1_CULTURE_ID + "=?;", new String[]{String.valueOf(id)}, null);
+        Cursor newCursor = db.rawQuery(
+                "SELECT " + COLUMN2_CULTURE_NAME +
+                " FROM " + TABLE_CULTURE +
+                " WHERE " + COLUMN1_CULTURE_ID + "=?;", new String[]{String.valueOf(id)}, null);
         newCursor.moveToFirst();
         return newCursor.getString(newCursor.getColumnIndex(COLUMN2_CULTURE_NAME));
     }
 
+    public String getActivityName(SQLiteDatabase db, int id){
+        Cursor newCursor = db.rawQuery(
+                "SELECT " + COLUMN2_ACTIVITY_NAME +
+                " FROM " + TABLE_ACTIVITY +
+                " WHERE " + COLUMN1_ACTIVITY_ID + "=?;", new String[]{String.valueOf(id)}, null);
+        newCursor.moveToFirst();
+        return newCursor.getString(newCursor.getColumnIndex(COLUMN2_ACTIVITY_NAME));
+    }
+
     public int getActivityID(SQLiteDatabase db, String name){
-        Cursor newCursor = db.rawQuery("SELECT " + COLUMN1_ACTIVITY_ID + " FROM " + TABLE_ACTIVITY + " WHERE " + COLUMN2_ACTIVITY_NAME + "=?;", new String[]{name}, null);
+        Cursor newCursor = db.rawQuery(
+                "SELECT " + COLUMN1_ACTIVITY_ID +
+                " FROM " + TABLE_ACTIVITY +
+                " WHERE " + COLUMN2_ACTIVITY_NAME + "=?;", new String[]{name}, null);
         newCursor.moveToFirst();
         return newCursor.getInt(newCursor.getColumnIndex(COLUMN1_ACTIVITY_ID));
     }
 
     public int getZoneID(SQLiteDatabase db, String name){
-        Cursor newCursor = db.rawQuery("SELECT " + COLUMN1_ZONE_ID + " FROM " + TABLE_ZONE + " WHERE " + COLUMN2_ZONE_NAME + "=?;", new String[]{name}, null);
+        Cursor newCursor = db.rawQuery(
+                "SELECT " + COLUMN1_ZONE_ID +
+                " FROM " + TABLE_ZONE +
+                " WHERE " + COLUMN2_ZONE_NAME + "=?;", new String[]{name}, null);
         newCursor.moveToFirst();
         return newCursor.getInt(newCursor.getColumnIndex(COLUMN1_ZONE_ID));
     }
 
-    public  boolean insertCultureRegistry(SQLiteDatabase db, String name,String seedDate, String gps){
+    public  boolean insertCultureRegistry(SQLiteDatabase db,
+                                          String name,String seedDate, String gps){
         Long resultado;
 
         ContentValues newCV = new ContentValues();
@@ -864,14 +910,15 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         newCV.put(COLUMN3_CULTUREREGISTRY_DATE, seedDate);
         newCV.put(COLUMN4_CULTUREREGISTRY_GPS, gps);
         resultado=db.insert(TABLE_CULTUREREGISTRY, null, newCV);
-        if ( resultado==-1)
-            return false;
-        else
-            return true;
+        return resultado != -1;
     }
 
     public void listCultureRegistry(SQLiteDatabase db){
-        Cursor newCursor = db.query(TABLE_CULTUREREGISTRY, new String[]{COLUMN1_CULTUREREGISTRY_ID, COLUMN2_CULTUREREGISTRY_CULTUREID, COLUMN3_CULTUREREGISTRY_DATE, COLUMN4_CULTUREREGISTRY_GPS },null,null,null,null,null);
+        Cursor newCursor = db.query(TABLE_CULTUREREGISTRY,
+                new String[]{COLUMN1_CULTUREREGISTRY_ID, COLUMN2_CULTUREREGISTRY_CULTUREID,
+                        COLUMN3_CULTUREREGISTRY_DATE, COLUMN4_CULTUREREGISTRY_GPS },
+                null,null,null,null,null);
+
         while(newCursor.moveToNext()){
             Log.d("Table CultReistry", "\n\n---------Nova Linha-------");
             Log.d("Table CultRegistry", "ID: " + newCursor.getString(0) );
@@ -879,7 +926,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             Log.d("Table CultReistry", "Date : " + newCursor.getString(2) );
             Log.d("Table CultReistry", "GPS: " + newCursor.getString(3) );
         }
-
     }
 
     public String[] getCultureRegistryName(SQLiteDatabase db){
@@ -891,11 +937,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             String[] list = new String[newCursor.getCount()];
             int i = 0;
             while(newCursor.moveToNext()){
-              /*  Log.d("Table CultReistry", "\n\n---------Nova Linha-------");
-                Log.d("Table CultRegistry", "ID: " + newCursor.getString(0) );
-                Log.d("Table CultRegistry", "CultID: " + newCursor.getString(1) );
-                Log.d("Table CultReistry", "Date : " + newCursor.getString(2) );
-                Log.d("Table CultReistry", "GPS: " + newCursor.getString(3) ); */
                 list[i] = getCultureName(db, newCursor.getInt(
                         newCursor.getColumnIndex(COLUMN2_CULTUREREGISTRY_CULTUREID)));
                 i++;
@@ -904,5 +945,33 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             return list;
         }
         return new String[]{};
+    }
+
+    public Vector<String> getActivitiesForMonthCulture(SQLiteDatabase db,
+                                                       String culture, String month, int week){
+        int cultureID = getCultureID(db, culture);
+        Vector<String> act = new Vector<>();
+
+        Cursor newCursor = db.rawQuery(
+                "SELECT " +COLUMN1_CULTUREINFO_ID+
+                " FROM " +TABLE_CULTUREINFO+
+                " WHERE "+COLUMN2_CULTUREINFO_CULTUREID+ "=?" +
+                " AND " +COLUMN3_CULTUREINFO_MONTH+ " =?  AND " +COLUMN6_CULTUREINFO_WEEK+ " =? ",
+                new String[]{String.valueOf(cultureID), month, String.valueOf(week)});
+
+        while (newCursor.moveToNext()){
+            Cursor newCursor1 = db.rawQuery(
+                    "SELECT " +COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID+
+                    " FROM "  +TABLE_CULTUREINFOACTIVITY+
+                    " WHERE " +COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID+ "=? ",
+                    new String[]{String.valueOf(newCursor.getInt(
+                            newCursor.getColumnIndex(COLUMN1_CULTUREINFO_ID)))});
+
+            while(newCursor1.moveToNext())
+                act.addElement(getActivityName(db,newCursor1.getInt(
+                    newCursor1.getColumnIndex(COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID))));
+        }
+
+        return act;
     }
 }
