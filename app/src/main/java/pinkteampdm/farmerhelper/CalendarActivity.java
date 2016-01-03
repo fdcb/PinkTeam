@@ -22,7 +22,7 @@ import java.util.Vector;
 public class CalendarActivity extends AppCompatActivity {
 
 
-    LinearLayout tab0, tab1, tab2;
+    LinearLayout tab, tab1, tab2;
     TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, month_TV;
     int day, month, week;
     String month_name;
@@ -70,7 +70,7 @@ public class CalendarActivity extends AppCompatActivity {
         aux = auxProcessor(aux);
         tv7.setText(""+aux);
 
-        tab0 = (LinearLayout)findViewById(R.id.act_LinearLayout);
+        tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
 
         dbHelp = new DataBaseHelper(this);
         sqdb = dbHelp.getWritableDatabase();
@@ -82,9 +82,13 @@ public class CalendarActivity extends AppCompatActivity {
                                                                         month_name, week);
             for(int j = 0; j< act.size(); j++){
                 Log.d(""+registeredCultures, act.elementAt(j));
-                LayoutInflater layoutInflater =
-                        (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                final View addView = layoutInflater.inflate(R.layout.todo, null);
+                LayoutInflater layoutInflater = (LayoutInflater)
+                        getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                View addView = layoutInflater.inflate(R.layout.todo, null);
+                TextView actCult = (TextView)addView.findViewById(R.id.actCult_TextView);
+                actCult.setText(act.elementAt(j) + " " + registeredCultures[i]);
+                tab.addView(addView);
             }
         }
    /*   tab1 = (LinearLayout)findViewById(R.id.tab2);
