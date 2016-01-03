@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AgriculturaSucks</string>
+    <string name="app_name">Farmer Helper</string>
     <string name="addPlus">+</string>
     <string name="finish">Finalizar</string>
     <string name="alreadyExistsCulture">\nJá adicionou essa cultura!</string>
@@ -25,8 +25,12 @@
     <string name="title_activity_plant">PlantActivity</string>
     <string name="title_activity_date">DateActivity</string>
     <string name="nothing_inserted_yet">Ainda não adicionou nenhuma cultura!</string>
+    <string name="where_to_do_it">Onde?</string>
+    <string name="best_moon">Lua Recomendada</string>
+    <string name="country_place">Zona do Pais</string>
 
     <color name="font_button">#fbf9ff</color>
+    <color name="bar">#57d6b7</color>
     <color name="bg_button">#3b967c</color>
     <color name="bgPressed_button">#327e5b</color>
     <color name="border_button">#dd515151</color>
@@ -35,6 +39,7 @@
     <color name="background">#ffffff</color>
     <color name="shadow_button">#27000000</color>
     <color name="shadow_button_border">#1da7a7a7</color>
+    
     <string name="title_activity_calendar">CalendarActivity</string>
 
 </resources>

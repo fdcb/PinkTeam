@@ -8,8 +8,12 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Actividade Cultura"
+        android:textColor="@color/bg_button"
+        android:textSize="28dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/actCult_TextView"
-        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_above="@+id/bestmoon_textView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -20,10 +24,9 @@
         android:text="Lua"
         android:id="@+id/lua_textView"
         android:gravity="bottom"
-        android:layout_below="@+id/actCult_TextView"
+        android:layout_above="@+id/country_textView"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,9 +34,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Zona Pais"
         android:id="@+id/zone_TextView"
-        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/where_textView"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="65dp"
         android:layout_alignParentEnd="true" />
 
     <TextView
@@ -41,10 +44,53 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/local_textView"
+        android:layout_marginTop="198dp"
+        android:text="Local"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="95dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:text="Local" />
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/where_to_do_it"
+        android:id="@+id/where_textView"
+        android:textSize="22dp"
+        android:textColor="@color/bgPressed_button"
+        android:layout_marginBottom="20dp"
+        android:layout_alignBottom="@+id/local_textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country_place"
+        android:id="@+id/country_textView"
+        android:textSize="22dp"
+        android:textColor="@color/bgPressed_button"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/zone_TextView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/best_moon"
+        android:textSize="22dp"
+        android:textColor="@color/bgPressed_button"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/bestmoon_textView"
+        android:layout_above="@+id/lua_textView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="5px"
+        android:foregroundGravity="bottom"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/bar"
+        />
 
 </RelativeLayout>
