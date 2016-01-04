@@ -49,6 +49,10 @@
             android:name=".ActProfileActivity"
             android:label="@string/title_activity_act_profile" >
         </activity>
+        <activity
+            android:name=".AddNewActActivity"
+            android:label="@string/title_activity_add_new_act" >
+        </activity>
     </application>
 
 </manifest>

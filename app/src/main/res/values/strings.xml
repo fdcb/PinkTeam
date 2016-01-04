@@ -47,7 +47,7 @@
     <string name="title_activity_calendar">Agenda</string>
     <string name="title_activity_list_act">Lista de Atividades</string>
     <string name="title_activity_act_profile">ActProfileActivity</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="add_new_act">Adicionar Nova Actividade</string>
+    <string name="title_activity_add_new_act">Nova Actividade</string>
 
 </resources>

@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Vector;
