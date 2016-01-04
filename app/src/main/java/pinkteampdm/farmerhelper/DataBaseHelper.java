@@ -512,7 +512,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     }
 
-    private void insertActivity(SQLiteDatabase db, String name, String description){
+    public void insertActivity(SQLiteDatabase db, String name, String description){
         db.execSQL("INSERT INTO " +TABLE_ACTIVITY+ "(" +COLUMN2_ACTIVITY_NAME+ ", "
                 +COLUMN3_ACTIVITY_DESCRIPTION+") VALUES (\"" +name+ "\", \""  +description+ "\");");
     }
@@ -843,7 +843,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         }
         return new String[]{};
     }
-
 
     public String[] getListActivityNames(SQLiteDatabase db){
         Cursor newCursor = db.query(TABLE_ACTIVITY, new String[]{COLUMN2_ACTIVITY_NAME},
