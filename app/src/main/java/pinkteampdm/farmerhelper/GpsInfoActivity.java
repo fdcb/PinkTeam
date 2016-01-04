@@ -52,7 +52,8 @@ public class GpsInfoActivity extends AppCompatActivity {
         helpBD = new DataBaseHelper(this);
         bd = helpBD.getWritableDatabase();
 
-       cultures=getIntent().getExtras().getStringArrayList("cultures");
+        cultures=getIntent().getExtras().getStringArrayList("cultures");
+        getSupportActionBar().setTitle(cultures.get(1));
        /* for ( int i=0;i<cultures.size();i++)
             Log.i("GPS ACTIVIDADE",cultures.get(i) );*/
 

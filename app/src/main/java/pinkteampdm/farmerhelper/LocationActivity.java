@@ -44,8 +44,8 @@ public class LocationActivity extends AppCompatActivity {
         titleChoose = (TextView) findViewById(R.id.textView_chooseCulture);
 
         nameCulture=cultures.get(1);
-            titleChoose.setText(titleChoose.getText() + " " + nameCulture + "?");
-
+        titleChoose.setText(titleChoose.getText() + "?");
+        getSupportActionBar().setTitle(nameCulture);
         gps = new GPSTracker(LocationActivity.this);
 
         // check if GPS enabled
@@ -59,8 +59,6 @@ public class LocationActivity extends AppCompatActivity {
     }
     //buttonYes
     public void locationAutomatic( View view){
-        //System.out.println("YESSS");
-        //depois de implementar a actividade onde vamos buscar a data, alterar codigo aqui!!!
 
         helpBD.insertCultureRegistry(db, nameCulture, cultures.get(0), "" + latitude + "," + longitude);
         helpBD.listCultureRegistry(db);

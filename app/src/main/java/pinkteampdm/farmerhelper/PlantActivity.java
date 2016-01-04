@@ -33,12 +33,10 @@ public class PlantActivity extends AppCompatActivity {
         cultures=getIntent().getExtras().getStringArrayList("cultures");
         titlePlant=(TextView) findViewById(R.id.textView_plant);
 
-        for( int i=0;i<cultures.size();i++)
-            Log.d("Inicio da app: "+i+":", cultures.get(i));
 
         nameCulture = cultures.get(0);
-        titlePlant.setText(titlePlant.getText() + " " + nameCulture + "?");
-
+        titlePlant.setText(titlePlant.getText() + "?");
+        getSupportActionBar().setTitle(nameCulture);
         helpBD = new DataBaseHelper(this);
         db = helpBD.getWritableDatabase();
         calendar = Calendar.getInstance();
