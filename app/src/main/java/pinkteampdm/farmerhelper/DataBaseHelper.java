@@ -12,59 +12,59 @@ import java.util.Vector;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
 
-    private static final String DATABASE_NAME = "AgriculturaProj.db";
-    private static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "AgriculturaProj.db";
+    public static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_CULTUREREGISTRY = "CultureRegistry" ;
-    private static final String COLUMN1_CULTUREREGISTRY_ID = "RegistryID";
-    private static final String COLUMN2_CULTUREREGISTRY_CULTUREID = "CultureID";
-    private static final String COLUMN3_CULTUREREGISTRY_DATE = "SeedDate";
-    private static final String COLUMN4_CULTUREREGISTRY_GPS = "GpsCoordinates";
+    public static final String TABLE_CULTUREREGISTRY = "CultureRegistry" ;
+    public static final String COLUMN1_CULTUREREGISTRY_ID = "RegistryID";
+    public static final String COLUMN2_CULTUREREGISTRY_CULTUREID = "CultureID";
+    public static final String COLUMN3_CULTUREREGISTRY_DATE = "SeedDate";
+    public static final String COLUMN4_CULTUREREGISTRY_GPS = "GpsCoordinates";
 
-    private static final String TABLE_CULTURE = "Culture";
-    private static final String COLUMN1_CULTURE_ID = "CultureID";
-    private static final String COLUMN2_CULTURE_NAME = "CultureName";
+    public static final String TABLE_CULTURE = "Culture";
+    public static final String COLUMN1_CULTURE_ID = "CultureID";
+    public static final String COLUMN2_CULTURE_NAME = "CultureName";
 
-    private static final String TABLE_CULTUREINFO = "CultureInfo";
-    private static final String COLUMN1_CULTUREINFO_ID = "CultureInfoID";
-    private static final String COLUMN2_CULTUREINFO_CULTUREID = "CultureID";
-    private static final String COLUMN3_CULTUREINFO_MONTH = "Month";
-    private static final String COLUMN4_CULTUREINFO_MOON = "MoonFase";
-    private static final String COLUMN5_CULTUREINFO_ZONE = "CountryZone";
-    private static final String COLUMN6_CULTUREINFO_WEEK = "Week";
+    public static final String TABLE_CULTUREINFO = "CultureInfo";
+    public static final String COLUMN1_CULTUREINFO_ID = "CultureInfoID";
+    public static final String COLUMN2_CULTUREINFO_CULTUREID = "CultureID";
+    public static final String COLUMN3_CULTUREINFO_MONTH = "Month";
+    public static final String COLUMN4_CULTUREINFO_MOON = "MoonFase";
+    public static final String COLUMN5_CULTUREINFO_ZONE = "CountryZone";
+    public static final String COLUMN6_CULTUREINFO_WEEK = "Week";
 
-    private final static String TABLE_ACTIVITY = "Activity";
-    private final static String COLUMN1_ACTIVITY_ID = "ActivityID";
-    private final static String COLUMN2_ACTIVITY_NAME = "Name";
-    private final static String COLUMN3_ACTIVITY_DESCRIPTION = "Description";
+    public final static String TABLE_ACTIVITY = "Activity";
+    public final static String COLUMN1_ACTIVITY_ID = "ActivityID";
+    public final static String COLUMN2_ACTIVITY_NAME = "Name";
+    public final static String COLUMN3_ACTIVITY_DESCRIPTION = "Description";
 
-    private final static String TABLE_PLAGUE = "Plague";
-    private final static String COLUMN1_PLAGUE_ID = "PlagueID";
-    private final static String COLUMN2_PLAGUE_NAME = "Name";
-    private final static String COLUMN3_PLAGUE_MONTH = "Month";
+    public final static String TABLE_PLAGUE = "Plague";
+    public final static String COLUMN1_PLAGUE_ID = "PlagueID";
+    public final static String COLUMN2_PLAGUE_NAME = "Name";
+    public final static String COLUMN3_PLAGUE_MONTH = "Month";
 
-    private final static String TABLE_ZONE = "Zone";
-    private final static String COLUMN1_ZONE_ID = "ZoneID";
-    private final static String COLUMN2_ZONE_NAME = "Name";
-    private final static String COLUMN3_ZONE_DESCRIPTION = "Description";
+    public final static String TABLE_ZONE = "Zone";
+    public final static String COLUMN1_ZONE_ID = "ZoneID";
+    public final static String COLUMN2_ZONE_NAME = "Name";
+    public final static String COLUMN3_ZONE_DESCRIPTION = "Description";
 
-    private final static String TABLE_CULTUREINFOZONE = "CultureInfoZone";
-    private final static String COLUMN1_CULTUREINFOZONE_ZONEID = "ZoneID";
-    private final static String COLUMN2_CULTUREINFOZONE_CULTUREINFOID = "CultureInfoID";
+    public final static String TABLE_CULTUREINFOZONE = "CultureInfoZone";
+    public final static String COLUMN1_CULTUREINFOZONE_ZONEID = "ZoneID";
+    public final static String COLUMN2_CULTUREINFOZONE_CULTUREINFOID = "CultureInfoID";
 
-    private final static String TABLE_PLAGUECULTURE = "PlagueCulture";
-    private final static String COLUMN1_PLAGUECULTURE_PLAGUEID = "PlagueID";
-    private final static String COLUMN2_PLAGUECULTURE_CULTUREID = "CultureID";
+    public final static String TABLE_PLAGUECULTURE = "PlagueCulture";
+    public final static String COLUMN1_PLAGUECULTURE_PLAGUEID = "PlagueID";
+    public final static String COLUMN2_PLAGUECULTURE_CULTUREID = "CultureID";
 
-    private final static String TABLE_CULTUREINFOACTIVITY = "CultureInfoActivity";
-    private final static String COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID = "ActivityID";
-    private final static String COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID = "CultureInfoID";
+    public final static String TABLE_CULTUREINFOACTIVITY = "CultureInfoActivity";
+    public final static String COLUMN1_CULTUREINFOACTIVITY_ACTIVITYID = "ActivityID";
+    public final static String COLUMN2_CULTUREINFOACTIVITY_CULTUREINFOID = "CultureInfoID";
 
-    private final String nothing = "Qualquer";
-    private final String []zone = new String[]{"Normal", "Estufa", "Horta","Jardim"};
-    private final String []place = new String[]{"Sul", "Norte/Centro"};
-    private final String []moons = new String[]{"Minguante", "Crescente"};
-    private final String []months = new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio",
+    public final String nothing = "Qualquer";
+    public final String []zone = new String[]{"Normal", "Estufa", "Horta","Jardim"};
+    public final String []place = new String[]{"Sul", "Norte/Centro"};
+    public final String []moons = new String[]{"Minguante", "Crescente"};
+    public final String []months = new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio",
                                                  "Junho", "Julho", "Agosto", "Setembro", "Outubro",
                                                  "Novembro", "Dezembro"};
 
@@ -613,10 +613,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         insertActivityInfo(db, "Semear", cultureInfoID);
         insertZoneInfo(db, zone[0], cultureInfoID);
 
-        cultureInfoID = insertInfoCulture(db, "Alface", months[1], nothing, place[1], 0);
-        insertActivityInfo(db, "Semear", cultureInfoID);
-        insertZoneInfo(db, zone[0], cultureInfoID);
-
         cultureInfoID = insertInfoCulture(db, "Alho Porro", months[1], nothing, place[1], 0);
         insertActivityInfo(db, "Semear", cultureInfoID);
         insertZoneInfo(db, zone[0], cultureInfoID);
@@ -724,10 +720,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cultureInfoID = insertInfoCulture(db, "Melão", months[0], nothing, nothing, 0);
         insertActivityInfo(db, "Semear", cultureInfoID);
 
-        cultureInfoID = insertInfoCulture(db, "Tomate", months[0], nothing, nothing, 0);
-        insertActivityInfo(db, "Semear", cultureInfoID);
-        insertZoneInfo(db, zone[1], cultureInfoID);
-
         cultureInfoID = insertInfoCulture(db, "Feijão", months[0], nothing, place[0], 0);
         insertActivityInfo(db, "Semear", cultureInfoID);
         insertActivityInfo(db, "Transplantar", cultureInfoID);
@@ -744,6 +736,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cultureInfoID = insertInfoCulture(db, "Tomate", months[0], nothing, nothing, 0);
         insertActivityInfo(db, "Semear", cultureInfoID);
         insertZoneInfo(db, zone[0], cultureInfoID);
+        insertZoneInfo(db, zone[1], cultureInfoID);
 
         cultureInfoID = insertInfoCulture(db, "Salsa", months[0], nothing, place[1], 0);
         insertActivityInfo(db, "Semear", cultureInfoID);
@@ -835,6 +828,25 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public String[] getListCultureNames(SQLiteDatabase db){
         Cursor newCursor = db.query(TABLE_CULTURE, new String[]{COLUMN2_CULTURE_NAME},
+                null,null,null,null,null);
+        if(newCursor.getCount() > 0){
+            String[] list = new String[newCursor.getCount()];
+            //  newCursor.moveToFirst();
+            int i = 0;
+            while(newCursor.moveToNext()){
+                list[i] = newCursor.getString(0);
+                i++;
+            }
+
+            newCursor.close();
+            return list;
+        }
+        return new String[]{};
+    }
+
+
+    public String[] getListActivityNames(SQLiteDatabase db){
+        Cursor newCursor = db.query(TABLE_ACTIVITY, new String[]{COLUMN2_ACTIVITY_NAME},
                 null,null,null,null,null);
         if(newCursor.getCount() > 0){
             String[] list = new String[newCursor.getCount()];

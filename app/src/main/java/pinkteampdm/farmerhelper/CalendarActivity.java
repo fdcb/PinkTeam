@@ -116,6 +116,12 @@ public class CalendarActivity extends AppCompatActivity {
             startActivity(newIntent);
             return true;
         }
+        if(id == R.id.listActivities){
+            Intent newIntent = new Intent(this, ListActActivity.class);
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(newIntent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

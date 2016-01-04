@@ -20,7 +20,7 @@
     <string name="date">Data:</string>
     <string name="dateButton">Inserir</string>
     <string name="localGPS">Localização GPS</string>
-    <string name="insertCoo">Quer introduzir as coordenadas manualmente para a cultura ?</string>
+    <string name="insertCoo">Quer introduzir as coordenadas manualmente para a cultura?</string>
     <string name="title_activity_location">LocationActivity</string>
     <string name="title_activity_plant">PlantActivity</string>
     <string name="title_activity_date">DateActivity</string>
@@ -45,5 +45,9 @@
     <color name="font_unselected">#47b9a3</color>
     
     <string name="title_activity_calendar">Agenda</string>
+    <string name="title_activity_list_act">Lista de Atividades</string>
+    <string name="title_activity_act_profile">ActProfileActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
