@@ -79,7 +79,7 @@ public class CalendarActivity extends AppCompatActivity {
 
         tab1.setVisibility(View.INVISIBLE);
         tab2.setVisibility(View.INVISIBLE);*/
-    }
+   // }
 
     private void addActivities() {
         for (int i = 0; i < registeredCultures.length; i++) {
@@ -202,7 +202,7 @@ public class CalendarActivity extends AppCompatActivity {
                 getSystemService(NOTIFICATION_SERVICE);
 
         for (int i = 0; i < registeredCultures.length - 1; i++) {
-            registeredCultures[i]
+            //registeredCultures[i]
             act = dbHelp.getActivitiesForMonthCulture(sqdb, registeredCultures[i],
                     month_name, week);
             nCalendar = Calendar.getInstance();
