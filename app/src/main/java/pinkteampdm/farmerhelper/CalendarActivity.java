@@ -1,6 +1,9 @@
 package pinkteampdm.farmerhelper;
 
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,20 +24,23 @@ public class CalendarActivity extends AppCompatActivity {
 
 
     LinearLayout tab;
-    TextView current_week,next_week,month_TV;
+    TextView current_week, next_week, month_TV;
     int day, month, week;
     String month_name;
     String[] registeredCultures;
     SQLiteDatabase sqdb;
     DataBaseHelper dbHelp;
+    Vector<Culture> act;
+    Calendar nCalendar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        month_TV = (TextView)findViewById(R.id.textView);
-        current_week = (TextView)findViewById(R.id.tv1);
-        next_week = (TextView)findViewById(R.id.tv2);
+        month_TV = (TextView) findViewById(R.id.textView);
+        current_week = (TextView) findViewById(R.id.tv1);
+        next_week = (TextView) findViewById(R.id.tv2);
 
         Calendar newCalendar;
         newCalendar = Calendar.getInstance();
@@ -46,13 +52,28 @@ public class CalendarActivity extends AppCompatActivity {
         month_name = months[month];
         month_TV.setText(month_name);
 
-        tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
+        tab = (LinearLayout) findViewById(R.id.act_LinearLayout);
 
         dbHelp = new DataBaseHelper(this);
         sqdb = dbHelp.getWritableDatabase();
 
         registeredCultures = dbHelp.getCultureRegistryName(sqdb);
         addActivities();
+
+      /*  NotificationManager notificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+
+        for (int i = 0; i < registeredCultures.length - 1; i++) {
+            act = dbHelp.getActivitiesForMonthCulture(sqdb, registeredCultures[i],
+                    month_name, week);
+            nCalendar = Calendar.getInstance();
+            month = newCalendar.get(Calendar.MONTH);
+            DateFormatSymbols dfs1 = new DateFormatSymbols();
+            String[] months1 = dfs.getMonths();
+            month_name = months1[month];
+            week = fixWeek(newCalendar.get(Calendar.WEEK_OF_MONTH));*/
+        }
+
    /*   tab1 = (LinearLayout)findViewById(R.id.tab2);
         tab2 = (LinearLayout)findViewById(R.id.tab3);
 
@@ -60,39 +81,40 @@ public class CalendarActivity extends AppCompatActivity {
         tab2.setVisibility(View.INVISIBLE);*/
     }
 
-    private void addActivities(){
-        for(int i = 0; i< registeredCultures.length; i++){
+    private void addActivities() {
+        for (int i = 0; i < registeredCultures.length; i++) {
             Vector<Culture> act = dbHelp.getActivitiesForMonthCulture(sqdb, registeredCultures[i],
                     month_name, week);
-            for(int j = 0; j< act.size(); j++){
+            for (int j = 0; j < act.size(); j++) {
                 addViewAct(registeredCultures[i], act.elementAt(j).getAct_name(),
-                        act.elementAt(j).getMoon(),act.elementAt(j).getPlaceString(),
+                        act.elementAt(j).getMoon(), act.elementAt(j).getPlaceString(),
                         act.elementAt(j).getCountry_zone());
             }
         }
     }
 
-    private void addViewAct(String culture, String activity, String moon, String local, String place){
+    private void addViewAct(String culture, String activity, String moon, String local, String place) {
         LayoutInflater layoutInflater = (LayoutInflater)
                 getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View addView = layoutInflater.inflate(R.layout.todo, null);
-        TextView actCult = (TextView)addView.findViewById(R.id.actCult_TextView);
+        TextView actCult = (TextView) addView.findViewById(R.id.actCult_TextView);
         actCult.setText(activity + " " + culture);
-        TextView moonTV = (TextView)addView.findViewById(R.id.lua_textView);
+        TextView moonTV = (TextView) addView.findViewById(R.id.lua_textView);
         moonTV.setText(moon);
-        TextView localTV = (TextView)addView.findViewById(R.id.local_textView);
+        TextView localTV = (TextView) addView.findViewById(R.id.local_textView);
         localTV.setText(local);
-        TextView placeTV = (TextView)addView.findViewById(R.id.zone_TextView);
+        TextView placeTV = (TextView) addView.findViewById(R.id.zone_TextView);
         placeTV.setText(place);
         tab.addView(addView);
     }
 
-    private int fixWeek(int week){
-        if(week<3)
+    private int fixWeek(int week) {
+        if (week < 3)
             return 0;
         return 2;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -115,7 +137,7 @@ public class CalendarActivity extends AppCompatActivity {
             startActivity(newIntent);
             return true;
         }
-        if(id == R.id.listActivities){
+        if (id == R.id.listActivities) {
             Intent newIntent = new Intent(this, ListActActivity.class);
             newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(newIntent);
@@ -124,7 +146,8 @@ public class CalendarActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClickTab0(View view){
+
+    public void onClickTab0(View view) {
 
         current_week.setTextColor(getResources().getColor(R.color.font_selected));
         next_week.setTextColor(getResources().getColor(R.color.font_unselected));
@@ -134,7 +157,7 @@ public class CalendarActivity extends AppCompatActivity {
         newCalendar = Calendar.getInstance();
         day = newCalendar.get(Calendar.DAY_OF_MONTH);
         week = fixWeek(newCalendar.get(Calendar.WEEK_OF_MONTH));
-        tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
+        tab = (LinearLayout) findViewById(R.id.act_LinearLayout);
 
         dbHelp = new DataBaseHelper(this);
         sqdb = dbHelp.getWritableDatabase();
@@ -143,7 +166,7 @@ public class CalendarActivity extends AppCompatActivity {
         addActivities();
     }
 
-    public void onClickTab1(View view){
+    public void onClickTab1(View view) {
         current_week.setTextColor(getResources().getColor(R.color.font_unselected));
         next_week.setTextColor(getResources().getColor(R.color.font_selected));
 
@@ -152,7 +175,7 @@ public class CalendarActivity extends AppCompatActivity {
         newCalendar = Calendar.getInstance();
         day = newCalendar.get(Calendar.DAY_OF_MONTH);
         week++;
-        tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
+        tab = (LinearLayout) findViewById(R.id.act_LinearLayout);
 
         dbHelp = new DataBaseHelper(this);
         sqdb = dbHelp.getWritableDatabase();
@@ -166,4 +189,36 @@ public class CalendarActivity extends AppCompatActivity {
         tab1.setVisibility(View.INVISIBLE);
         tab0.setVisibility(View.INVISIBLE);
     } */
+
+
+    public void showNotification(View view) {
+        NotificationManager notificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+
+        for (int i = 0; i < registeredCultures.length - 1; i++) {
+            registeredCultures[i]
+            act = dbHelp.getActivitiesForMonthCulture(sqdb, registeredCultures[i],
+                    month_name, week);
+            nCalendar = Calendar.getInstance();
+            month = nCalendar.get(Calendar.MONTH);
+            DateFormatSymbols dfs1 = new DateFormatSymbols();
+            String[] months1 = dfs1.getMonths();
+            month_name = months1[month];
+            week = fixWeek(nCalendar.get(Calendar.WEEK_OF_MONTH));
+
+            AlarmManager alarmManager = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 9);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND,0);
+            //calendar.set(Calendar.DAY_OF_MONTH,act); //Integer.parseInt(dia.getText().toString()));
+            calendar.set(Calendar.MONTH, month);//Integer.parseInt(mes.getText().toString())-1);
+            calendar.set(Calendar.WEEK_OF_MONTH, week);//Integer.parseInt(ano.getText().toString()));
+            long when = calendar.getTimeInMillis();
+            Intent intent1 = new Intent(this,MyAlarmService.class);
+            PendingIntent pendingIntent = PendingIntent.getService(this, (int) System.currentTimeMillis(), intent1, 0);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, when, pendingIntent);
+        }
+    }
+
 }

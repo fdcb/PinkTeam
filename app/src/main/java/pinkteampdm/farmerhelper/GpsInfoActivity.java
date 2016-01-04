@@ -62,8 +62,6 @@ public class GpsInfoActivity extends AppCompatActivity {
 
     }
 
-
-
     public void insertDataGPS(View view ){
         double inicialValue, value, inicialValue1,value1;
         int degree,minutes,seconds,degree1,minutes1,seconds1;

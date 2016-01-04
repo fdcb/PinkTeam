@@ -32,6 +32,7 @@
     <string name="next_Week">Proxima Semana</string>
     <string name="insert_act_name">Nome da Actividade</string>
     <string name="insert_description">Insira uma descrição da nova actividade</string>
+    <string name="alert">Alerta!</string>
 
     <color name="font_button">#fbf9ff</color>
     <color name="bar">#57d6b7</color>
