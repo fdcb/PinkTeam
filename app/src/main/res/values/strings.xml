@@ -51,5 +51,10 @@
     <string name="title_activity_act_profile">ActProfileActivity</string>
     <string name="add_new_act">Adicionar Nova Actividade</string>
     <string name="title_activity_add_new_act">Nova Actividade</string>
+    <string name="title_activity_list_cultures">ListCultures</string>
+    <string name="listCultures">Lista das culturas</string>
+    <string name="title_activity_add_new_culture">AddNewCultureActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

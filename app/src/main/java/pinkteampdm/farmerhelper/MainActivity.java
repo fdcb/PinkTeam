@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
         cultureName_aCTextView = (AutoCompleteTextView)findViewById(R.id.editText_NomeCultura);
         cultureZone_scrollView = (ScrollView)findViewById(R.id.scrollView_zonaNomes);
 
-
-
         cultureNamesArray = dBHelp.getListCultureNames(oSQLiteDB);
 
         ArrayAdapter<String> newAdapter = new ArrayAdapter<>(this, R.layout.actv, cultureNamesArray);

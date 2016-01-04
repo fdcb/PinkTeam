@@ -53,6 +53,14 @@
             android:name=".AddNewActActivity"
             android:label="@string/title_activity_add_new_act" >
         </activity>
+        <activity
+            android:name=".ListCultures"
+            android:label="@string/title_activity_list_cultures" >
+        </activity>
+        <activity
+            android:name=".AddNewCultureActivity"
+            android:label="@string/title_activity_add_new_culture" >
+        </activity>
     </application>
 
 </manifest>
