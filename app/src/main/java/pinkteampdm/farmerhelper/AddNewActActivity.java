@@ -25,7 +25,6 @@ public class AddNewActActivity extends AppCompatActivity {
 
         nameET = (EditText)findViewById(R.id.actName_editText);
         descET = (EditText)findViewById(R.id.description_editText);
-
     }
 
     public void onClickFinish(View view){
