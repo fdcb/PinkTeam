@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +21,8 @@ import java.util.Vector;
 public class CalendarActivity extends AppCompatActivity {
 
 
-    LinearLayout tab, tab1, tab2;
-    TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, month_TV;
+    LinearLayout tab;
+    TextView current_week,next_week,month_TV;
     int day, month, week;
     String month_name;
     String[] registeredCultures;
@@ -35,14 +34,8 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         month_TV = (TextView)findViewById(R.id.textView);
-
-        tv1 = (TextView)findViewById(R.id.tv1);
-        tv2 = (TextView)findViewById(R.id.tv2);
-        tv3 = (TextView)findViewById(R.id.tv3);
-        tv4 = (TextView)findViewById(R.id.tv4);
-        tv5 = (TextView)findViewById(R.id.tv5);
-        tv6 = (TextView)findViewById(R.id.tv6);
-        tv7 = (TextView)findViewById(R.id.tv7);
+        current_week = (TextView)findViewById(R.id.tv1);
+        next_week = (TextView)findViewById(R.id.tv2);
 
         Calendar newCalendar;
         newCalendar = Calendar.getInstance();
@@ -53,22 +46,6 @@ public class CalendarActivity extends AppCompatActivity {
         String[] months = dfs.getMonths();
         month_name = months[month];
         month_TV.setText(month_name);
-        Log.d("day", "" + day);
-        Log.d("week", "" + week);
-        int aux = day;
-        tv1.setText(""+aux);
-        aux = auxProcessor(aux);
-        tv2.setText(""+aux);
-        aux = auxProcessor(aux);
-        tv3.setText(""+aux);
-        aux = auxProcessor(aux);
-        tv4.setText(""+aux);
-        aux = auxProcessor(aux);
-        tv5.setText(""+aux);
-        aux = auxProcessor(aux);
-        tv6.setText(""+aux);
-        aux = auxProcessor(aux);
-        tv7.setText(""+aux);
 
         tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
 
@@ -112,12 +89,6 @@ public class CalendarActivity extends AppCompatActivity {
         tab.addView(addView);
     }
 
-    private int auxProcessor(int aux){
-        if(aux == 31)
-            return 1;
-        return aux+1;
-    }
-
     private int fixWeek(int week){
         if(week<3)
             return 0;
@@ -148,18 +119,43 @@ public class CalendarActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
- /*   public void onClickTab0(View view){
-        tab0.setVisibility(View.VISIBLE);
-        tab1.setVisibility(View.INVISIBLE);
-        tab2.setVisibility(View.INVISIBLE);
+    public void onClickTab0(View view){
+
+        current_week.setTextColor(getResources().getColor(R.color.font_selected));
+        next_week.setTextColor(getResources().getColor(R.color.font_unselected));
+
+        tab.removeViews(0, tab.getChildCount());
+        Calendar newCalendar;
+        newCalendar = Calendar.getInstance();
+        day = newCalendar.get(Calendar.DAY_OF_MONTH);
+        week = fixWeek(newCalendar.get(Calendar.WEEK_OF_MONTH));
+        tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
+
+        dbHelp = new DataBaseHelper(this);
+        sqdb = dbHelp.getWritableDatabase();
+
+        registeredCultures = dbHelp.getCultureRegistryName(sqdb);
+        addActivities();
     }
 
     public void onClickTab1(View view){
-        tab1.setVisibility(View.VISIBLE);
-        tab0.setVisibility(View.INVISIBLE);
-        tab2.setVisibility(View.INVISIBLE);
-    }
+        current_week.setTextColor(getResources().getColor(R.color.font_unselected));
+        next_week.setTextColor(getResources().getColor(R.color.font_selected));
 
+        tab.removeViews(0, tab.getChildCount());
+        Calendar newCalendar;
+        newCalendar = Calendar.getInstance();
+        day = newCalendar.get(Calendar.DAY_OF_MONTH);
+        week++;
+        tab = (LinearLayout)findViewById(R.id.act_LinearLayout);
+
+        dbHelp = new DataBaseHelper(this);
+        sqdb = dbHelp.getWritableDatabase();
+
+        registeredCultures = dbHelp.getCultureRegistryName(sqdb);
+        addActivities();
+    }
+/*
     public void onClickTab2(View view){
         tab2.setVisibility(View.VISIBLE);
         tab1.setVisibility(View.INVISIBLE);

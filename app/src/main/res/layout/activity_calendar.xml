@@ -20,60 +20,25 @@
             android:weightSum="1">
             <TextView
                 android:id="@+id/tv1"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:textSize="18dp"
+                android:textColor="@color/font_selected"
                 android:gravity="center"
-                android:text="1"
+                android:text="@string/this_Week"
                 android:onClick="onClickTab0"/>
+
             <TextView
+                android:layout_width="189dp"
+                android:layout_height="fill_parent"
+                android:text="@string/next_Week"
+                android:textSize="18dp"
+                android:textColor="@color/font_unselected"
+                android:gravity="center"
                 android:id="@+id/tv2"
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:text="2"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentEnd="true"
                 android:onClick="onClickTab1"/>
-            <TextView
-                android:id="@+id/tv3"
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:text="3"
-                android:onClick="onClickTab2"/>
-            <TextView
-                android:id="@+id/tv4"
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:text="4"
-                android:onClick="onClickTab3"/>
-            <TextView
-                android:id="@+id/tv5"
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:text="5"
-                android:onClick="onClickTab4"/>
-            <TextView
-                android:id="@+id/tv6"
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:text="6"
-                android:onClick="onClickTab5"/>
-            <TextView
-                android:id="@+id/tv7"
-                android:layout_width="50dp"
-                android:layout_height="fill_parent"
-                android:textSize="18dp"
-                android:gravity="center"
-                android:text="7"
-                android:onClick="onClickTab6"/>
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -110,4 +75,5 @@
         android:layout_below="@+id/horizontalScrollView"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" />
+
 </RelativeLayout>

@@ -28,6 +28,8 @@
     <string name="where_to_do_it">Onde?</string>
     <string name="best_moon">Lua Recomendada</string>
     <string name="country_place">Zona do Pais</string>
+    <string name="this_Week">Actividades Semanais</string>
+    <string name="next_Week">Proxima Semana</string>
 
     <color name="font_button">#fbf9ff</color>
     <color name="bar">#57d6b7</color>
@@ -39,7 +41,9 @@
     <color name="background">#ffffff</color>
     <color name="shadow_button">#27000000</color>
     <color name="shadow_button_border">#1da7a7a7</color>
+    <color name="font_selected">#266f64</color>
+    <color name="font_unselected">#47b9a3</color>
     
-    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_calendar">Agenda</string>
 
 </resources>
