@@ -143,6 +143,12 @@ public class CalendarActivity extends AppCompatActivity {
             startActivity(newIntent);
             return true;
         }
+        if(id == R.id.listCultures){
+            Intent newIntent = new Intent(this, ListCultures.class);
+            newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(newIntent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

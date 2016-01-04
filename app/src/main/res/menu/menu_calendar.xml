@@ -6,4 +6,6 @@
         android:orderInCategory="100" app:showAsAction="never"/>
     <item android:id="@+id/listActivities" android:title="@string/title_activity_list_act"
         android:orderInCategory="100" app:showAsAction="never"/>
+    <item android:id="@+id/listCultures" android:title="@string/listCultures"
+        android:orderInCategory="100" app:showAsAction="never"/>
 </menu>
